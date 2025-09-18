@@ -1,5 +1,6 @@
 package app.revanced.extension.shared.spoof.requests;
 
+import static app.revanced.extension.shared.ByteTrieSearch.convertStringsToBytes;
 import static app.revanced.extension.shared.spoof.requests.PlayerRoutes.GET_STREAMING_DATA;
 
 import androidx.annotation.NonNull;
@@ -13,12 +14,18 @@ import java.net.HttpURLConnection;
 import java.net.SocketTimeoutException;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+import app.revanced.extension.shared.ByteTrieSearch;
 import app.revanced.extension.shared.Logger;
 import app.revanced.extension.shared.Utils;
 import app.revanced.extension.shared.settings.BaseSettings;
@@ -35,21 +42,27 @@ import app.revanced.extension.shared.spoof.ClientType;
  */
 public class StreamingDataRequest {
 
-    private static final ClientType[] CLIENT_ORDER_TO_USE;
+    private static volatile ClientType[] clientOrderToUse = ClientType.values();
 
-    static {
-        ClientType[] allClientTypes = ClientType.values();
-        ClientType preferredClient = BaseSettings.SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get();
+    public static void setClientOrderToUse(List<ClientType> availableClients, ClientType preferredClient) {
+        Objects.requireNonNull(preferredClient);
 
-        CLIENT_ORDER_TO_USE = new ClientType[allClientTypes.length];
-        CLIENT_ORDER_TO_USE[0] = preferredClient;
+        int availableClientSize = availableClients.size();
+        if (!availableClients.contains(preferredClient)) {
+            availableClientSize++;
+        }
+
+        clientOrderToUse = new ClientType[availableClientSize];
+        clientOrderToUse[0] = preferredClient;
 
         int i = 1;
-        for (ClientType c : allClientTypes) {
+        for (ClientType c : availableClients) {
             if (c != preferredClient) {
-                CLIENT_ORDER_TO_USE[i++] = c;
+                clientOrderToUse[i++] = c;
             }
         }
+
+        Logger.printDebug(() -> "Available spoof clients: " + Arrays.toString(clientOrderToUse));
     }
 
     private static final String AUTHORIZATION_HEADER = "Authorization";
@@ -86,6 +99,16 @@ public class StreamingDataRequest {
                     return size() > CACHE_LIMIT; // Evict the oldest entry if over the cache limit.
                 }
             });
+
+    /**
+     * Strings found in the response if the video is a livestream.
+     */
+    private static final ByteTrieSearch liveStreamBufferSearch = new ByteTrieSearch(
+            convertStringsToBytes(
+                    "yt_live_broadcast",
+                    "yt_premiere_broadcast"
+            )
+    );
 
     private static volatile ClientType lastSpoofedClientType;
 
@@ -154,7 +177,7 @@ public class StreamingDataRequest {
                 }
             }
 
-            if (!authHeadersIncludes && clientType.requiresAuth) {
+            if (!authHeadersIncludes && clientType.useAuth) {
                 Logger.printDebug(() -> "Skipping client since user is not logged in: " + clientType
                         + " videoId: " + videoId);
                 return null;
@@ -193,9 +216,9 @@ public class StreamingDataRequest {
 
         // Retry with different client if empty response body is received.
         int i = 0;
-        for (ClientType clientType : CLIENT_ORDER_TO_USE) {
+        for (ClientType clientType : clientOrderToUse) {
             // Show an error if the last client type fails, or if debug is enabled then show for all attempts.
-            final boolean showErrorToast = (++i == CLIENT_ORDER_TO_USE.length) || debugEnabled;
+            final boolean showErrorToast = (++i == clientOrderToUse.length) || debugEnabled;
 
             HttpURLConnection connection = send(clientType, videoId, playerHeaders, showErrorToast);
             if (connection != null) {
@@ -215,9 +238,13 @@ public class StreamingDataRequest {
                             while ((bytesRead = inputStream.read(buffer)) >= 0) {
                                 baos.write(buffer, 0, bytesRead);
                             }
-                            lastSpoofedClientType = clientType;
+                            if (clientType == ClientType.ANDROID_CREATOR && liveStreamBufferSearch.matches(buffer)) {
+                                Logger.printDebug(() -> "Skipping Android Studio as video is a livestream: " + videoId);
+                            } else {
+                                lastSpoofedClientType = clientType;
 
-                            return ByteBuffer.wrap(baos.toByteArray());
+                                return ByteBuffer.wrap(baos.toByteArray());
+                            }
                         }
                     }
                 } catch (IOException ex) {

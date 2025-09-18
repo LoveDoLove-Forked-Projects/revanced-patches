@@ -15,6 +15,7 @@ import app.revanced.extension.shared.Utils;
 import app.revanced.extension.shared.settings.BaseSettings;
 import app.revanced.extension.shared.settings.Setting;
 import app.revanced.extension.shared.spoof.ClientType;
+import app.revanced.extension.youtube.settings.Settings;
 
 @SuppressWarnings({"deprecation", "unused"})
 public class SpoofStreamingDataSideEffectsPreference extends Preference {
@@ -69,7 +70,7 @@ public class SpoofStreamingDataSideEffectsPreference extends Preference {
     }
 
     private void updateUI() {
-        ClientType clientType = BaseSettings.SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get();
+        ClientType clientType = Settings.SPOOF_VIDEO_STREAMS_CLIENT_TYPE.get();
         if (currentClientType == clientType) {
             return;
         }
@@ -78,21 +79,25 @@ public class SpoofStreamingDataSideEffectsPreference extends Preference {
         Logger.printDebug(() -> "Updating spoof stream side effects preference");
         setEnabled(BaseSettings.SPOOF_VIDEO_STREAMS.get());
 
-        String key = "revanced_spoof_video_streams_about_" +
-                (clientType == ClientType.IOS_UNPLUGGED
-                        ? "ios_tv"
-                        : "android");
-        String title = str(key + "_title");
-        String summary = str(key + "_summary");
+        setTitle(str("revanced_spoof_video_streams_about_title"));
 
-        // Android VR supports AV1 but all other clients do not.
-        if (clientType != ClientType.ANDROID_VR_AUTH && clientType != ClientType.ANDROID_VR_NO_AUTH) {
+        String summary = str(clientType == ClientType.IPADOS
+                ? "revanced_spoof_video_streams_about_ipados_summary"
+                // Same base side effects for Android VR, Android Studio, and visionOS.
+                : "revanced_spoof_video_streams_about_android_summary");
+
+        if (clientType == ClientType.IPADOS) {
             summary += '\n' + str("revanced_spoof_video_streams_about_no_av1");
+        } else if (clientType == ClientType.VISIONOS) {
+            summary = str("revanced_spoof_video_streams_about_experimental")
+                    + '\n' + summary
+                    + '\n' + str("revanced_spoof_video_streams_about_no_av1")
+                    + '\n' + str("revanced_spoof_video_streams_about_kids_videos");
+        } else if (clientType == ClientType.ANDROID_CREATOR) {
+            summary += '\n' + str("revanced_spoof_video_streams_about_no_av1")
+                    + '\n' + str("revanced_spoof_video_streams_about_kids_videos");
         }
 
-        summary += '\n' + str("revanced_spoof_video_streams_about_kids_videos");
-
-        setTitle(title);
         setSummary(summary);
     }
 }

@@ -122,17 +122,31 @@
             </string-array>
         </patch>
     </app>
+    <app id="music">
+        <patch id="misc.fix.playback.spoofVideoStreamsPatch">
+            <string-array name="revanced_spoof_video_streams_client_type_entries">
+                <item>Android VR</item>
+                <item>visionOS</item>
+            </string-array>
+            <string-array name="revanced_spoof_video_streams_client_type_entry_values">
+                <item>ANDROID_VR_1_43_32</item>
+                <item>VISIONOS</item>
+            </string-array>
+        </patch>
+    </app>
     <app id="youtube">
         <patch id="misc.fix.playback.spoofVideoStreamsPatch">
             <string-array name="revanced_spoof_video_streams_client_type_entries">
-                <item>Android TV</item>
                 <item>Android VR</item>
-                <item>iOS TV</item>
+                <item>Android Studio</item>
+                <item>visionOS</item>
+                <item>iPadOS</item>
             </string-array>
             <string-array name="revanced_spoof_video_streams_client_type_entry_values">
-                <item>ANDROID_UNPLUGGED</item>
-                <item>ANDROID_VR_NO_AUTH</item>
-                <item>IOS_UNPLUGGED</item>
+                <item>ANDROID_VR_1_61_48</item>
+                <item>ANDROID_CREATOR</item>
+                <item>VISIONOS</item>
+                <item>IPADOS</item>
             </string-array>
         </patch>
         <patch id="interaction.swipecontrols.swipeControlsResourcePatch">
