@@ -1,13 +1,11 @@
 package app.revanced.extension.youtube.sponsorblock;
 
 import static app.revanced.extension.shared.StringRef.str;
-import static app.revanced.extension.shared.Utils.dipToPixels;
 import static app.revanced.extension.youtube.sponsorblock.objects.CategoryBehaviour.SKIP_AUTOMATICALLY;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.ShapeDrawable;
@@ -35,6 +33,7 @@ import java.util.Objects;
 
 import app.revanced.extension.shared.Logger;
 import app.revanced.extension.shared.Utils;
+import app.revanced.extension.shared.ui.Dim;
 import app.revanced.extension.youtube.patches.VideoInformation;
 import app.revanced.extension.youtube.settings.Settings;
 import app.revanced.extension.youtube.shared.PlayerType;
@@ -48,9 +47,10 @@ import kotlin.Unit;
 
 /**
  * Handles showing, scheduling, and skipping of all {@link SponsorSegment} for the current video.
- *
+ * <p>
  * Class is not thread safe. All methods must be called on the main thread unless otherwise specified.
  */
+@SuppressLint("NewApi")
 public class SegmentPlaybackController {
 
     /**
@@ -82,7 +82,7 @@ public class SegmentPlaybackController {
      * Highlight segments have zero length as they are a point in time.
      * Draw them on screen using a fixed width bar.
      */
-    private static final int HIGHLIGHT_SEGMENT_DRAW_BAR_WIDTH = dipToPixels(7);
+    private static final int HIGHLIGHT_SEGMENT_DRAW_BAR_WIDTH = Dim.dp7;
 
     @Nullable
     private static String currentVideoId;
@@ -122,7 +122,6 @@ public class SegmentPlaybackController {
     /**
      * Used to prevent re-showing a previously hidden skip button when exiting an embedded segment.
      * Only used when {@link Settings#SB_AUTO_HIDE_SKIP_BUTTON} is enabled.
-     *
      * A collection of segments that have automatically hidden the skip button for, and all segments in this list
      * contain the current video time.  Segment are removed when playback exits the segment.
      */
@@ -809,14 +808,12 @@ public class SegmentPlaybackController {
 
         LinearLayout mainLayout = new LinearLayout(currentContext);
         mainLayout.setOrientation(LinearLayout.VERTICAL);
-        final int dip8 = dipToPixels(8);
-        final int dip16 = dipToPixels(16);
-        mainLayout.setPadding(dip16, dip8, dip16, dip8);
+        mainLayout.setPadding(Dim.dp16, Dim.dp8, Dim.dp16, Dim.dp8);
         mainLayout.setGravity(Gravity.CENTER);
-        mainLayout.setMinimumHeight(dipToPixels(48));
+        mainLayout.setMinimumHeight(Dim.dp48);
 
         ShapeDrawable background = new ShapeDrawable(new RoundRectShape(
-                Utils.createCornerRadii(20), null, null));
+                Dim.roundedCorners(20), null, null));
         background.getPaint().setColor(Utils.getDialogBackgroundColor());
         mainLayout.setBackground(background);
 
@@ -867,23 +864,11 @@ public class SegmentPlaybackController {
 
         Window window = dialog.getWindow();
         if (window != null) {
-            // Remove window animations and use custom fade animation.
-            window.setWindowAnimations(0);
-
-            WindowManager.LayoutParams params = window.getAttributes();
-            params.gravity = Gravity.BOTTOM;
-            params.y = dipToPixels(72);
-            int portraitWidth = Utils.percentageWidthToPixels(60); // 60% of the screen width.
-
-            if (Resources.getSystem().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                portraitWidth = Math.min(portraitWidth, Utils.percentageHeightToPixels(60)); // 60% of the screen height.
-            }
-            params.width = portraitWidth;
-            params.dimAmount = 0.0f;
-            window.setAttributes(params);
-            window.setBackgroundDrawable(null);
+            window.setWindowAnimations(0); // Remove window animations and use custom fade animation.
             window.addFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL);
             window.addFlags(WindowManager.LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH);
+
+            Utils.setDialogWindowParameters(window, Gravity.BOTTOM, 72, 60, true);
         }
 
         if (dismissUndoToast()) {

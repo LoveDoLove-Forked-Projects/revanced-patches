@@ -1,21 +1,25 @@
 package app.revanced.extension.youtube.patches.components;
 
+import app.revanced.extension.shared.settings.BaseSettings;
 import app.revanced.extension.shared.settings.Setting;
 import app.revanced.extension.shared.spoof.SpoofVideoStreamsPatch;
 import app.revanced.extension.youtube.settings.Settings;
 import app.revanced.extension.youtube.shared.ShortsPlayerState;
 
+import java.util.List;
+
 @SuppressWarnings("unused")
 public class PlayerFlyoutMenuItemsFilter extends Filter {
 
     public static final class HideAudioFlyoutMenuAvailability implements Setting.Availability {
-        private static final boolean AVAILABLE_ON_LAUNCH = !SpoofVideoStreamsPatch.spoofingToClientWithNoMultiAudioStreams();
-
         @Override
         public boolean isAvailable() {
-            // Check conditions of launch and now. Otherwise if spoofing is changed
-            // without a restart the setting will show as available when it's not.
-            return AVAILABLE_ON_LAUNCH && !SpoofVideoStreamsPatch.spoofingToClientWithNoMultiAudioStreams();
+            return !SpoofVideoStreamsPatch.spoofingToClientWithNoMultiAudioStreams();
+        }
+
+        @Override
+        public List<Setting<?>> getParentSettings() {
+            return List.of(BaseSettings.SPOOF_VIDEO_STREAMS);
         }
     }
 
@@ -30,7 +34,7 @@ public class PlayerFlyoutMenuItemsFilter extends Filter {
 
         addPathCallbacks(
                 videoQualityMenuFooter,
-                new StringFilterGroup(null, "overflow_menu_item.eml")
+                new StringFilterGroup(null, "overflow_menu_item.e")
         );
 
         flyoutFilterGroupList.addAll(
@@ -55,12 +59,12 @@ public class PlayerFlyoutMenuItemsFilter extends Filter {
                         "volume_stable_"
                 ),
                 new ByteArrayFilterGroup(
-                        Settings.HIDE_PLAYER_FLYOUT_HELP,
-                        "yt_outline_question_circle_"
+                        Settings.HIDE_PLAYER_FLYOUT_LISTEN_WITH_YOUTUBE_MUSIC,
+                        "yt_outline_youtube_music_"
                 ),
                 new ByteArrayFilterGroup(
-                        Settings.HIDE_PLAYER_FLYOUT_MORE_INFO,
-                        "yt_outline_info_circle_"
+                        Settings.HIDE_PLAYER_FLYOUT_HELP,
+                        "yt_outline_question_circle_"
                 ),
                 new ByteArrayFilterGroup(
                         Settings.HIDE_PLAYER_FLYOUT_LOCK_SCREEN,

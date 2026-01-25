@@ -1,10 +1,12 @@
 package app.revanced.extension.shared.settings;
 
+import static app.revanced.extension.shared.Utils.getResourceIdentifierOrThrow;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.preference.PreferenceFragment;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -13,6 +15,7 @@ import android.widget.Toolbar;
 import app.revanced.extension.shared.Logger;
 import app.revanced.extension.shared.Utils;
 import app.revanced.extension.shared.settings.preference.ToolbarPreferenceFragment;
+import app.revanced.extension.shared.ui.Dim;
 
 /**
  * Base class for hooking activities to inject a custom PreferenceFragment with a toolbar.
@@ -20,6 +23,15 @@ import app.revanced.extension.shared.settings.preference.ToolbarPreferenceFragme
  */
 @SuppressWarnings({"deprecation", "NewApi"})
 public abstract class BaseActivityHook extends Activity {
+
+    private static final int ID_REVANCED_SETTINGS_FRAGMENTS =
+            getResourceIdentifierOrThrow("revanced_settings_fragments", "id");
+    private static final int ID_REVANCED_TOOLBAR_PARENT =
+            getResourceIdentifierOrThrow("revanced_toolbar_parent", "id");
+    public static final int LAYOUT_REVANCED_SETTINGS_WITH_TOOLBAR =
+            getResourceIdentifierOrThrow("revanced_settings_with_toolbar", "layout");
+    private static final int STRING_REVANCED_SETTINGS_TITLE =
+            getResourceIdentifierOrThrow("revanced_settings_title", "string");
 
     /**
      * Layout parameters for the toolbar, extracted from the dummy toolbar.
@@ -55,11 +67,25 @@ public abstract class BaseActivityHook extends Activity {
 
             activity.getFragmentManager()
                     .beginTransaction()
-                    .replace(Utils.getResourceIdentifier("revanced_settings_fragments", "id"), fragment)
+                    .replace(ID_REVANCED_SETTINGS_FRAGMENTS, fragment)
                     .commit();
         } catch (Exception ex) {
             Logger.printException(() -> "initialize failure", ex);
         }
+    }
+
+    /**
+     * Injection point.
+     * Overrides the ReVanced settings language.
+     */
+    @SuppressWarnings("unused")
+    public static Context getAttachBaseContext(Context original) {
+        AppLanguage language = BaseSettings.REVANCED_LANGUAGE.get();
+        if (language == AppLanguage.DEFAULT) {
+            return original;
+        }
+
+        return Utils.getContext();
     }
 
     /**
@@ -69,8 +95,7 @@ public abstract class BaseActivityHook extends Activity {
     protected void createToolbar(Activity activity, PreferenceFragment fragment) {
         // Replace dummy placeholder toolbar.
         // This is required to fix submenu title alignment issue with Android ASOP 15+
-        ViewGroup toolBarParent = activity.findViewById(
-                Utils.getResourceIdentifier("revanced_toolbar_parent", "id"));
+        ViewGroup toolBarParent = activity.findViewById(ID_REVANCED_TOOLBAR_PARENT);
         ViewGroup dummyToolbar = Utils.getChildViewByResourceName(toolBarParent, "revanced_toolbar");
         toolbarLayoutParams = dummyToolbar.getLayoutParams();
         toolBarParent.removeView(dummyToolbar);
@@ -82,15 +107,14 @@ public abstract class BaseActivityHook extends Activity {
         toolbar.setBackgroundColor(getToolbarBackgroundColor());
         toolbar.setNavigationIcon(getNavigationIcon());
         toolbar.setNavigationOnClickListener(getNavigationClickListener(activity));
-        toolbar.setTitle(Utils.getResourceIdentifier("revanced_settings_title", "string"));
+        toolbar.setTitle(STRING_REVANCED_SETTINGS_TITLE);
 
-        final int margin = Utils.dipToPixels(16);
-        toolbar.setTitleMarginStart(margin);
-        toolbar.setTitleMarginEnd(margin);
+        toolbar.setTitleMarginStart(Dim.dp16);
+        toolbar.setTitleMarginEnd(Dim.dp16);
         TextView toolbarTextView = Utils.getChildView(toolbar, false, view -> view instanceof TextView);
         if (toolbarTextView != null) {
             toolbarTextView.setTextColor(Utils.getAppForegroundColor());
-            toolbarTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+            toolbarTextView.setTextSize(20);
         }
         setToolbarLayoutParams(toolbar);
 

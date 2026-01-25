@@ -20,6 +20,18 @@ Second \"item\" text"</string>
 -->
 <resources>
   <app id="shared">
+  <patch id="layout.branding.baseCustomBrandingPatch">
+  <string name="revanced_custom_branding_name_title">অ্যাপের নাম</string>
+  <!-- Translations of this should be identical to revanced_custom_branding_icon_entry_5 -->
+  <string name="revanced_custom_branding_name_entry_5">কাস্টম</string>
+  <string name="revanced_custom_branding_icon_title">অ্যাপ আইকন</string>
+  <string name="revanced_custom_branding_icon_entry_1">মূল</string>
+  <!-- Translation of this should be identical to revanced_header_logo_entry_5 -->
+  <string name="revanced_custom_branding_icon_entry_3">রিভ্যান্সড মিনিমাল</string>
+  <string name="revanced_custom_branding_icon_entry_4">রিভ্যান্সড স্কেলড</string>
+  <!-- Translations of this should be identical to revanced_custom_branding_name_entry_5 -->
+  <string name="revanced_custom_branding_icon_entry_5">কাস্টম</string>
+  </patch>
   <patch id="misc.checks.checkEnvironmentPatch">
   <string name="revanced_check_environment_failed_title">চেক ফেইল করেছে</string>
   <string name="revanced_check_environment_dialog_open_official_source_button">অফিশ্যাল ওয়েবসাইট খুলুন</string>
@@ -31,9 +43,15 @@ Second \"item\" text"</string>
   <string name="revanced_check_environment_not_near_patch_time_days">%s দিন আগে প্যাচ করা হয়েছে</string>
   <string name="revanced_check_environment_not_near_patch_time_invalid">APK তৈরির তারিখ ত্রুটিপূর্ণ</string>
   </patch>
+  <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
+  <string name="revanced_check_watch_history_domain_name_dialog_title">ReVanced নোটিশ</string>
+  <string name="revanced_check_watch_history_domain_name_dialog_message">আপনার দেখার ইতিহাস সংরক্ষিত হচ্ছে না।&lt;br&gt;&lt;br&gt;এটি সম্ভবত DNS অ্যাড ব্লকার অথবা নেটওয়ার্ক প্রক্সির কারণে।&lt;br&gt;&lt;br&gt;এটি ঠিক করার জন্য, &lt;b&gt;s.youtube.com&lt;/b&gt;  সাদা তালিকাভুক্ত করুন অথবা সকল DNS ব্লকার এবং প্রক্সি বন্ধ করুন।</string>
+  <string name="revanced_check_watch_history_domain_name_dialog_ignore">আবার দেখাবেন না</string>
+  </patch>
   <patch id="misc.settings.settingsResourcePatch">
   <string name="revanced_settings_submenu_title">সেটিংস</string>
   <string name="revanced_settings_confirm_user_dialog_title">আপনি কি এগিয়ে যেতে চান?</string>
+  <string name="revanced_settings_save">সংরক্ষণ করুন</string>
   <string name="revanced_settings_reset">আবার সেট করুন</string>
   <string name="revanced_settings_reset_color">রঙ রিসেট করুন</string>
   <string name="revanced_settings_color_invalid">অবৈধ রঙ</string>
@@ -48,14 +66,28 @@ Second \"item\" text"</string>
   <string name="revanced_settings_search_hint">অনুসন্ধান সেটিংস</string>
   <string name="revanced_settings_search_no_results_title">\'%s\'-এর জন্য কোন ফলাফল পাওয়া যায়নি</string>
   <string name="revanced_settings_search_no_results_summary">অন্য কোনো কীওয়ার্ড চেষ্টা করুন</string>
+  <string name="revanced_settings_search_recent_searches">সাম্প্রতিক অনুসন্ধানগুলি</string>
   <string name="revanced_settings_search_remove_message">অনুসন্ধান ইতিহাস থেকে সরাবেন?</string>
+  <string name="revanced_settings_search_clear_history">অনুসন্ধানের ইতিহাস মুছুন</string>
+  <string name="revanced_settings_search_clear_history_message">আপনি কি আপনার সমস্ত অনুসন্ধানের ইতিহাস মুছে ফেলতে চান?</string>
+  <string name="revanced_settings_search_tips_title">অনুসন্ধানের টিপস</string>
+  <string name="revanced_settings_search_tips_summary">"• এটিতে নেভিগেট করতে একটি পাথে ট্যাপ করুন
+• এটিতে নেভিগেট করতে একটি সেটিং-এ লং-প্রেস করুন
+• অনুসন্ধানের প্রশ্ন ইতিহাসে সংরক্ষণ করতে এন্টার চাপুন
+• অনুসন্ধান কেসিং এবং বিরামচিহ্ন উপেক্ষা করে
+• অক্ষম শিশু সেটিংসের উপরে মূল সেটিংস দেখা যায়"</string>
+  <string name="revanced_settings_search_empty_history_title">অনুসন্ধান ইতিহাস খালি</string>
+  <string name="revanced_settings_search_empty_history_summary">অনুসন্ধান ইতিহাস সংরক্ষণ করতে, একটি অনুসন্ধানের প্রশ্ন টাইপ করুন এবং এন্টার চাপুন</string>
+  <string name="revanced_settings_search_history_title">অনুসন্ধান সেটিংসের ইতিহাস দেখান</string>
+  <string name="revanced_settings_search_history_summary_on">সেটিংস অনুসন্ধান ইতিহাস দেখানো হয়েছে</string>
+  <string name="revanced_settings_search_history_summary_off">সেটিংস অনুসন্ধান ইতিহাস দেখানো হয় না</string>
   <string name="revanced_show_menu_icons_title">ReVanced সেটিং আইকন দেখান</string>
   <string name="revanced_show_menu_icons_summary_on">সেটিং আইকন দেখানো হয়েছে</string>
   <string name="revanced_show_menu_icons_summary_off">সেটিং আইকন দেখানো হচ্ছে না</string>
   <string name="revanced_language_title">ReVanced ভাষা</string>
-  <string name="revanced_language_user_dialog_message">"কিছু ভাষার জন্য অনুবাদ অনুপস্থিত বা অসম্পূর্ণ হতে পারে।
+  <string name="revanced_language_user_dialog_message">"কিছু ভাষার অনুবাদ অনুপস্থিত বা অসম্পূর্ণ হতে পারে।
 
-নতুন ভাষা অনুবাদ করতে translate.revanced.app দেখুন"</string>
+নতুন ভাষা অনুবাদ করতে বা বিদ্যমান অনুবাদ উন্নত করতে, translate.revanced.app এ ভিজিট করুন"</string>
   <string name="revanced_language_DEFAULT">অ্যাপ্লিকেশনের ভাষা</string>
   <string name="revanced_pref_import_export_title">আমদানি এবং রপ্তানি</string>
   <string name="revanced_pref_import_export_summary">ReVanced সেটিং আমদানি বা রপ্তানি করুন</string>
@@ -101,12 +133,28 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
   <string name="revanced_spoof_video_streams_user_dialog_message">এই সেটিং বন্ধ করলে প্লেব্যাক সমস্যা হতে পারে।</string>
   <string name="revanced_spoof_video_streams_client_type_title">ডিফল্ট ক্লায়েন্ট</string>
   </patch>
+  <patch id="misc.audio.forceOriginalAudioPatch">
+  <string name="revanced_force_original_audio_title">মূল অডিও ভাষা বলপূর্বক চালু করুন</string>
+  <string name="revanced_force_original_audio_summary_on">মূল অডিও ভাষা ব্যবহার করা হচ্ছে</string>
+  <string name="revanced_force_original_audio_summary_off">ডিফল্ট অডিও ব্যবহার করছে</string>
+  <!-- 'Spoof video streams' should be the same translation used for 'revanced_spoof_video_streams_screen_title'. -->
+  <string name="revanced_force_original_audio_not_available">এই বৈশিষ্ট্যটি ব্যবহার করতে, \'ভিডিও স্ট্রিম স্পুফ করুন\' অ্যান্ড্রয়েড স্টুডিও ছাড়া অন্য কোনো ক্লায়েন্টে পরিবর্তন করুন</string>
+  </patch>
   <patch id="misc.debugging.enableDebuggingPatch">
   <string name="revanced_debug_screen_title">ডিবাগিং</string>
   <string name="revanced_debug_screen_summary">ডিবাগিং অপশন সক্রিয় বা নিষ্ক্রিয় করুন</string>
   <string name="revanced_debug_title">ডিবাগ লগিং</string>
   <string name="revanced_debug_summary_on">ডিবাগ লগ সক্রিয় হয়েছে</string>
   <string name="revanced_debug_summary_off">ডিবাগ লগ নিষ্ক্রিয় হয়েছে</string>
+  <string name="revanced_debug_stacktrace_title">স্টেক ট্রেস লগ</string>
+  <string name="revanced_debug_stacktrace_summary_on">ডিবাগ লগ স্টেক ট্রেস সংযুক্ত করবে</string>
+  <string name="revanced_debug_stacktrace_summary_off">ডিবাগ লগ স্টেক ট্রেস সংযুক্ত করবে না</string>
+  <string name="revanced_debug_toast_on_error_title">ReVanced এর ত্রুটির ক্ষেত্রে টোস্ট দেখান</string>
+  <string name="revanced_debug_toast_on_error_summary_on">যদি ত্রুটি ঘটে তবে toast দেখানো হবে</string>
+  <string name="revanced_debug_toast_on_error_summary_off">যদি ত্রুটি ঘটে তবে toast দেখানো হবে না</string>
+  <string name="revanced_debug_toast_on_error_user_dialog_message">"ত্রুটি \"toast\" বন্ধ করে ReVanced ত্রুটি বিজ্ঞপ্তিগুলি লুকানো হয়।
+
+আপনি কোনও অপ্রত্যাশিত ঘটনার বিষয়ে অবহিত হবেন না।"</string>
   <string name="revanced_debug_export_logs_to_clipboard_title">ডিবাগ লগগুলি রফতানি করুন</string>
   <string name="revanced_debug_export_logs_to_clipboard_summary">ক্লিপবোর্ডে ReVanced ডিবাগ লগগুলি অনুলিপি করে</string>
   <string name="revanced_debug_logs_disabled">ডিবাগ লগিং নিষ্ক্রিয় করা হয়েছে</string>
@@ -116,6 +164,22 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
   <string name="revanced_debug_logs_clear_buffer_title">ডিবাগ লগগুলি সাফ করুন</string>
   <string name="revanced_debug_logs_clear_buffer_summary">সমস্ত সঞ্চিত ReVanced ডিবাগ লগ সাফ করে</string>
   <string name="revanced_debug_logs_clear_toast">লগ সাফ করা হয়েছে</string>
+  <string name="revanced_debug_feature_flags_manager_title">ফিচার ফ্ল্যাগ Manager</string>
+  <string name="revanced_debug_feature_flags_manager_summary">বুলিয়ান ফিচার ফ্ল্যাগ পরিচালনা করুন</string>
+  <string name="revanced_debug_feature_flags_manager_active_header">সক্রিয় ফ্ল্যাগ (%d)</string>
+  <string name="revanced_debug_feature_flags_manager_blocked_header">ব্লক করা ফ্ল্যাগ (%d)</string>
+  <string name="revanced_debug_feature_flags_manager_search_hint">ফ্ল্যাগ খুঁজুন...</string>
+  <string name="revanced_debug_feature_flags_manager_toast_saved">ফ্ল্যাগ সংরক্ষণ করা হয়েছে</string>
+  <string name="revanced_debug_feature_flags_manager_toast_reset">ফ্ল্যাগ রিসেট করা হয়েছে</string>
+  <string name="revanced_debug_feature_flags_manager_toast_copied">ফ্ল্যাগ ক্লিপবোর্ডে কপি করা হয়েছে</string>
+  </patch>
+  <patch id="misc.privacy.sanitizeSharingLinksPatch">
+  <string name="revanced_sanitize_sharing_links_title">শেয়ারিং লিঙ্ক স্যানিটাইজ করুন</string>
+  <string name="revanced_sanitize_sharing_links_summary_on">শেয়ার করা লিঙ্ক থেকে ট্র্যাকিং ক্যোয়ারি প্যারামিটার সরানো হয়েছে</string>
+  <string name="revanced_sanitize_sharing_links_summary_off">শেয়ার করা লিঙ্ক থেকে ট্র্যাকিং ক্যোয়ারি প্যারামিটার সরানো হয়নি</string>
+  <string name="revanced_replace_music_with_youtube_title">শেয়ার লিঙ্কগুলি youtube.com-এ পরিবর্তন করুন</string>
+  <string name="revanced_replace_music_with_youtube_summary_on">শেয়ার করা লিঙ্কগুলি youtube.com ব্যবহার করে</string>
+  <string name="revanced_replace_music_with_youtube_summary_off">শেয়ার করা লিঙ্কগুলি music.youtube.com ব্যবহার করে</string>
   </patch>
   </app>
   <app id="youtube">
@@ -133,9 +197,6 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
   <string name="revanced_restore_old_settings_menus_title">পুরানো সেটিংস মেনু পুনরুদ্ধার করুন</string>
   <string name="revanced_restore_old_settings_menus_summary_on">পুরাতন সেটিংস মেনু দেখানো হচ্ছে</string>
   <string name="revanced_restore_old_settings_menus_summary_off">পুরাতন সেটিংস মেনু দেখানো হচ্ছে না</string>
-  <string name="revanced_settings_search_history_title">অনুসন্ধান সেটিংসের ইতিহাস দেখান</string>
-  <string name="revanced_settings_search_history_summary_on">সেটিংস অনুসন্ধান ইতিহাস দেখানো হয়েছে</string>
-  <string name="revanced_settings_search_history_summary_off">সেটিংস অনুসন্ধান ইতিহাস দেখানো হয় না</string>
   </patch>
   <patch id="misc.backgroundplayback.backgroundPlaybackPatch">
   <string name="revanced_shorts_disable_background_playback_title">Shorts ব্যাকগ্রাউন্ড প্লে অক্ষম করুন</string>
@@ -147,15 +208,6 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
   <string name="revanced_debug_protobuffer_summary_on">ডিবাগ লগ প্রটোকল বাফার সংযুক্ত করবে</string>
   <string name="revanced_debug_protobuffer_summary_off">ডিবাগ লগ প্রটোকল বাফার সংযুক্ত করবে না</string>
   <string name="revanced_debug_protobuffer_user_dialog_message">"এই সেটিংস সক্ষম করলে কিছু UI উপাদানের জন্য অন-স্ক্রীন পাঠ্য সহ অতিরিক্ত লেআউট ডেটা লগ করা হবে।\n\nএটি কাস্টম ফিল্টার তৈরি করার সময় উপাদান সনাক্ত করতে সাহায্য করতে পারে।\n\nতবে, এটি সক্রিয় করলে আপনার আইপি ঠিকানার মতো কিছু ব্যবহারকারীর ডেটাও লগ করা হবে।"</string>
-  <string name="revanced_debug_stacktrace_title">স্টেক ট্রেস লগ</string>
-  <string name="revanced_debug_stacktrace_summary_on">ডিবাগ লগ স্টেক ট্রেস সংযুক্ত করবে</string>
-  <string name="revanced_debug_stacktrace_summary_off">ডিবাগ লগ স্টেক ট্রেস সংযুক্ত করবে না</string>
-  <string name="revanced_debug_toast_on_error_title">ReVanced এর ত্রুটির ক্ষেত্রে টোস্ট দেখান</string>
-  <string name="revanced_debug_toast_on_error_summary_on">যদি ত্রুটি ঘটে তবে toast দেখানো হবে</string>
-  <string name="revanced_debug_toast_on_error_summary_off">যদি ত্রুটি ঘটে তবে toast দেখানো হবে না</string>
-  <string name="revanced_debug_toast_on_error_user_dialog_message">"ত্রুটি \"toast\" বন্ধ করে ReVanced ত্রুটি বিজ্ঞপ্তিগুলি লুকানো হয়।
-
-আপনি কোনও অপ্রত্যাশিত ঘটনার বিষয়ে অবহিত হবেন না।"</string>
   </patch>
   <patch id="layout.hide.general.hideLayoutComponentsPatch">
   <string name="revanced_hide_album_cards_title">অ্যালবাম কার্ড লুকান</string>
@@ -226,6 +278,9 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
   <string name="revanced_hide_video_recommendation_labels_title">ভিডিও সুপারিশ লেবেল লুকান</string>
   <string name="revanced_hide_video_recommendation_labels_summary_on">\"অন্যান্য দর্শক দেখেছেন\" এবং \"আপনার পছন্দ হতে পারে\" লেবেলগুলি অনুসন্ধান ফলাফলে লুকানো আছে</string>
   <string name="revanced_hide_video_recommendation_labels_summary_off">\"অন্যান্য দর্শক দেখেছেন\" এবং \"আপনার পছন্দ হতে পারে\" লেবেলগুলি অনুসন্ধান ফলাফলে দেখানো হয়েছে</string>
+  <string name="revanced_hide_visual_spacer_title">ভিজ্যুয়াল স্পেসার লুকান</string>
+  <string name="revanced_hide_visual_spacer_summary_on">ভিজ্যুয়াল স্পেসার লুকানো হয়েছে</string>
+  <string name="revanced_hide_visual_spacer_summary_off">ভিজ্যুয়াল স্পেসার দেখানো হয়েছে</string>
   <!-- https://logos.fandom.com/wiki/YouTube/Yoodles -->
   <string name="revanced_hide_doodles_title">YouTube Doodles छिपाएँ</string>
   <string name="revanced_hide_doodles_summary_on">লোগোতে YouTube Doodles অ্যানিমেশন লুকানো আছে</string>
@@ -280,15 +335,27 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
   <string name="revanced_hide_how_this_was_made_section_title">\'How this content was made\' লুকান</string>
   <string name="revanced_hide_how_this_was_made_section_summary_on">How this content was made বিভাগটি লুকানো আছে</string>
   <string name="revanced_hide_how_this_was_made_section_summary_off">How this content was made বিভাগটি দেখানো হয়েছে</string>
+  <string name="revanced_hide_hype_points_title">হাইপ পয়েন্ট লুকান</string>
+  <string name="revanced_hide_hype_points_summary_on">হাইপ পয়েন্ট লুকানো আছে</string>
+  <string name="revanced_hide_hype_points_summary_off">হাইপ পয়েন্ট দেখানো আছে</string>
   <string name="revanced_hide_podcast_section_title">\'Explore the podcast\' লুকান</string>
   <string name="revanced_hide_podcast_section_summary_on">Explore the podcast বিভাগটি লুকানো আছে</string>
   <string name="revanced_hide_podcast_section_summary_off">Explore the podcast বিভাগটি দেখানো হয়েছে</string>
+  <string name="revanced_hide_featured_links_section_title">ফিচার লিঙ্ক লুকান</string>
+  <string name="revanced_hide_featured_links_section_summary_on">বিশেষ লিঙ্ক বিভাগ লুকানো আছে</string>
+  <string name="revanced_hide_featured_links_section_summary_off">বিশেষ লিঙ্ক বিভাগ দেখানো আছে</string>
+  <string name="revanced_hide_featured_videos_section_title">বিশেষ ভিডিও লুকান</string>
+  <string name="revanced_hide_featured_videos_section_summary_on">বিশেষ ভিডিও বিভাগ লুকানো আছে</string>
+  <string name="revanced_hide_featured_videos_section_summary_off">বিশেষ ভিডিও বিভাগ দেখানো আছে</string>
   <string name="revanced_hide_info_cards_section_title">তথ্য কার্ড লুকান</string>
   <string name="revanced_hide_info_cards_section_summary_on">তথ্য কার্ড সেকশন লুকিয়ে রয়েছে</string>
   <string name="revanced_hide_info_cards_section_summary_off">তথ্য কার্ড সেকশন প্রদর্শিত হয়েছে</string>
   <string name="revanced_hide_key_concepts_section_title">\'Key concepts\' লুকান</string>
   <string name="revanced_hide_key_concepts_section_summary_on">Key concepts বিভাগটি লুকানো আছে</string>
   <string name="revanced_hide_key_concepts_section_summary_off">Key concepts বিভাগটি দেখানো হয়েছে</string>
+  <string name="revanced_hide_subscribe_button_title">সাবস্ক্রাইব বোতাম লুকান</string>
+  <string name="revanced_hide_subscribe_button_summary_on">সাবস্ক্রাইব বোতাম লুকানো আছে</string>
+  <string name="revanced_hide_subscribe_button_summary_off">সাবস্ক্রাইব বোতাম দেখানো আছে</string>
   <string name="revanced_hide_transcript_section_title">নথি লুকান</string>
   <string name="revanced_hide_transcript_section_summary_on">ট্রান্সস্ক্রিপ্ট বিভাগ লুকিয়ে রয়েছে</string>
   <string name="revanced_hide_transcript_section_summary_off">ট্রান্সস্ক্রিপ্ট বিভাগ প্রদর্শিত হয়েছে</string>
@@ -310,24 +377,32 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
   <string name="revanced_hide_filter_bar_feed_in_history_summary_off">দেখার ইতিহাসে দেখানো হয়েছে</string>
   <string name="revanced_channel_screen_title">চ্যানেল পৃষ্ঠা</string>
   <string name="revanced_channel_screen_summary">চ্যানেল পৃষ্ঠার উপাদানগুলি লুকান বা দেখান</string>
+  <!-- 'Community' should be translated with the same localized wording that YouTube displays. -->
+  <string name="revanced_hide_community_button_title">কমিউনিটি বোতাম লুকান</string>
+  <string name="revanced_hide_community_button_summary_on">কমিউনিটি বোতাম লুকানো আছে</string>
+  <string name="revanced_hide_community_button_summary_off">কমিউনিটি বোতাম দেখানো আছে</string>
   <!-- 'For You' should be translated using the same localized wording YouTube displays. -->
   <string name="revanced_hide_for_you_shelf_title">\'আপনার জন্য\' শেল্ফ লুকান</string>
   <string name="revanced_hide_for_you_shelf_summary_on">আপনার জন্য শেল্ফ লুকানো আছে</string>
   <string name="revanced_hide_for_you_shelf_summary_off">আপনার জন্য শেল্ফ দেখানো আছে</string>
+  <!-- 'Join' should be translated with the same localized wording that YouTube displays. -->
+  <string name="revanced_hide_join_button_title">যোগদান বোতাম লুকান</string>
+  <string name="revanced_hide_join_button_summary_on">যোগদান বোতাম লুকানো আছে</string>
+  <string name="revanced_hide_join_button_summary_off">যোগদান বোতাম দেখানো আছে</string>
   <string name="revanced_hide_links_preview_title">লিঙ্ক পূর্বরূপ লুকান</string>
   <string name="revanced_hide_links_preview_summary_on">লিঙ্ক পূর্বরূপ লুকানো আছে</string>
   <string name="revanced_hide_links_preview_summary_off">লিঙ্ক পূর্বরূপ দেখানো আছে</string>
   <string name="revanced_hide_members_shelf_title">সদস্য শেল্ফ লুকান</string>
   <string name="revanced_hide_members_shelf_summary_on">সদস্য শেল্ফ লুকানো আছে</string>
   <string name="revanced_hide_members_shelf_summary_off">সদস্যদের শেল্ফ দেখানো হয়েছে</string>
-  <!-- 'Visit Community' should be translated with the same localized wording that YouTube displays. -->
-  <string name="revanced_hide_visit_community_button_title">\'কমিউনিটি দেখুন\' বোতাম লুকান</string>
-  <string name="revanced_hide_visit_community_button_summary_on">\'কমিউনিটি দেখুন\' বোতাম লুকানো হয়েছে</string>
-  <string name="revanced_hide_visit_community_button_summary_off">কমিউনিটি ভিজিট বাটন দেখানো আছে</string>
-  <!-- 'Visit store' should be translated with the same localized wording that YouTube displays. -->
-  <string name="revanced_hide_visit_store_button_title">চ্যানেল পাতায় \'স্টোরে যান\' বোতাম লুকান</string>
-  <string name="revanced_hide_visit_store_button_summary_on">স্টোর ভিজিট বাটন লুকানো আছে</string>
-  <string name="revanced_hide_visit_store_button_summary_off">স্টোর ভিজিট বাটন দেখানো আছে</string>
+  <!-- 'Store' should be translated with the same localized wording that YouTube displays. -->
+  <string name="revanced_hide_store_button_title">স্টোর বোতাম লুকান</string>
+  <string name="revanced_hide_store_button_summary_on">স্টোর বোতাম লুকানো আছে</string>
+  <string name="revanced_hide_store_button_summary_off">স্টোর বোতাম দেখানো আছে</string>
+  <!-- 'Subscribe' should be translated with the same localized wording that YouTube displays. -->
+  <string name="revanced_hide_subscribe_button_in_channel_page_title">সাবস্ক্রাইব বোতাম লুকান</string>
+  <string name="revanced_hide_subscribe_button_in_channel_page_summary_on">সাবস্ক্রাইব বোতাম লুকানো আছে</string>
+  <string name="revanced_hide_subscribe_button_in_channel_page_summary_off">সাবস্ক্রাইব বোতাম দেখানো আছে</string>
   <string name="revanced_comments_screen_title">মন্তব্য</string>
   <string name="revanced_comments_screen_summary">মন্তব্য বিভাগের উপাদানগুলি লুকান বা দেখান৷</string>
   <string name="revanced_hide_comments_ai_chat_summary_title">এআই চ্যাট সারাংশ লুকান</string>
@@ -351,15 +426,15 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
   <string name="revanced_hide_comments_create_a_short_button_title">\'Short তৈরি করুন\' বোতাম লুকান</string>
   <string name="revanced_hide_comments_create_a_short_button_summary_on">একটি Shorts বোতাম তৈরি করুন লুকানো আছে</string>
   <string name="revanced_hide_comments_create_a_short_button_summary_off">একটি Shorts বোতাম তৈরি করুন দেখানো হয়েছে</string>
+  <string name="revanced_hide_comments_emoji_and_timestamp_buttons_title">ইমোজি এবং টাইমস্ট্যাম্প বোতামগুলি লুকান</string>
+  <string name="revanced_hide_comments_emoji_and_timestamp_buttons_summary_on">ইমোজি এবং টাইমস্ট্যাম্প বোতামগুলি লুকানো আছে</string>
+  <string name="revanced_hide_comments_emoji_and_timestamp_buttons_summary_off">ইমোজি এবং টাইমস্ট্যাম্প বোতামগুলি দেখানো আছে</string>
   <string name="revanced_hide_comments_preview_comment_title">মন্তব্যের পূর্বরূপ লুকান</string>
   <string name="revanced_hide_comments_preview_comment_summary_on">মন্তব্যের পূর্বরূপ লুকিয়ে রয়েছে</string>
   <string name="revanced_hide_comments_preview_comment_summary_off">মন্তব্যের পূর্বরূপ প্রদর্শিত হয়েছে</string>
   <string name="revanced_hide_comments_thanks_button_title">ধন্যবাদ বাটন লুকান</string>
   <string name="revanced_hide_comments_thanks_button_summary_on">ধন্যবাদ বোতাম লুকিয়ে রয়েছে</string>
   <string name="revanced_hide_comments_thanks_button_summary_off">ধন্যবাদ বোতাম প্রদর্শিত হয়েছে</string>
-  <string name="revanced_hide_comments_timestamp_button_title">টাইমস্ট্যাম্প বোতাম লুকান</string>
-  <string name="revanced_hide_comments_timestamp_button_summary_on">সময় চিহ্নিত করার বোতাম লুকানো আছে</string>
-  <string name="revanced_hide_comments_timestamp_button_summary_off">সময় চিহ্নিত করার বোতাম দেখানো হয়েছে</string>
   <string name="revanced_custom_filter_screen_title">কাস্টম ফিল্টার</string>
   <string name="revanced_custom_filter_screen_summary">কাস্টম ফিল্টার ব্যবহার করে বিভিন্ন উপাদান লুকান</string>
   <string name="revanced_custom_filter_title">কাস্টম ফিল্টার সক্রিয় করুন</string>
@@ -369,6 +444,20 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
   <!-- 'Component path builder strings' is the technical name for identifying the Litho UI layout items to hide. This is an advanced feature and most users will never use this. -->
   <string name="revanced_custom_filter_strings_summary">নতুন লাইন দ্বারা পৃথক করা ফিল্টার করার জন্য উপাদান পাথ বিল্ডার স্ট্রিং এর তালিকা</string>
   <string name="revanced_custom_filter_toast_invalid_syntax">ত্রুটিপূর্ণ কাস্টম ফিল্টার: %s</string>
+  <string name="revanced_hide_view_count_title">দেখার সংখ্যা লুকান</string>
+  <string name="revanced_hide_view_count_summary_on">ফিড এবং অনুসন্ধানের ফলাফলে দেখার সংখ্যা লুকানো আছে</string>
+  <string name="revanced_hide_view_count_summary_off">ফিড এবং অনুসন্ধানের ফলাফলে দেখার সংখ্যা দেখানো আছে</string>
+  <!-- Translations should lanaguge similar to revanced_hide_upload_time_user_dialog_message -->
+  <string name="revanced_hide_view_count_user_dialog_message">"সীমাবদ্ধতা:
+• Shorts শেল্ফ, চ্যানেল পেজ এবং অনুসন্ধানের ফলাফলে এখনও দেখার সংখ্যা দেখানো হতে পারে
+• এই বৈশিষ্ট্যটি অটোমোটিভ ফর্ম ফ্যাক্টরের সাথে কাজ করে না"</string>
+  <string name="revanced_hide_upload_time_title">আপলোডের সময় লুকান</string>
+  <string name="revanced_hide_upload_time_summary_on">আপলোডের সময় ফিড এবং সার্চ ফলাফলে লুকানো আছে</string>
+  <string name="revanced_hide_upload_time_summary_off">আপলোডের সময় ফিড এবং সার্চ ফলাফলে দেখানো আছে</string>
+  <!-- Translations should lanaguge similar to revanced_hide_view_count_user_dialog_message -->
+  <string name="revanced_hide_upload_time_user_dialog_message">"সীমাবদ্ধতা:
+• Shorts শেলফ, চ্যানেল পেজ এবং সার্চ ফলাফলে এখনও আপলোডের সময় দেখানো হতে পারে
+• এই বৈশিষ্ট্যটি অটোমোটিভ ফর্ম ফ্যাক্টরের সাথে কাজ করে না"</string>
   <string name="revanced_hide_keyword_content_screen_title">কীওয়ার্ড কনটেন্ট লুকান</string>
   <string name="revanced_hide_keyword_content_screen_summary">কীওয়ার্ড ফিল্টার ব্যবহার করে অনুসন্ধান এবং ফিড ভিডিও লুকান</string>
   <string name="revanced_hide_keyword_content_home_title">কীওয়ার্ড ব্যবহার করে প্রধান পাতার ভিডিও লুকান</string>
@@ -455,11 +544,11 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
   <string name="revanced_share_copy_url_success">ক্লিপবোর্ডে URL অনুলিপি করা হয়েছে</string>
   <string name="revanced_share_copy_url_timestamp_success">টাইমস্ট্যাম্প সহ URL অনুলিপি করা হয়েছে</string>
   <string name="revanced_copy_video_url_title">ভিডিও URL অনুলিপি বোতাম দেখান</string>
-  <string name="revanced_copy_video_url_summary_on">বোতামটি দেখানো হয়েছে। ভিডিও URL কপি করতে আলতো চাপুন। টাইমস্ট্যাম্প সহ কপি করতে টিপুন এবং ধরে রাখুন।</string>
-  <string name="revanced_copy_video_url_summary_off">বোতাম প্রদর্শিত হয়নি</string>
+  <string name="revanced_copy_video_url_summary_on">ভিডিও ইউআরএল কপি বোতাম দেখানো আছে। ভিডিও ইউআরএল কপি করতে ট্যাপ করুন। টাইমস্ট্যাম্প সহ কপি করতে ট্যাপ করে ধরে রাখুন</string>
+  <string name="revanced_copy_video_url_summary_off">ভিডিও ইউআরএল কপি বোতাম দেখানো নেই</string>
   <string name="revanced_copy_video_url_timestamp_title">টাইমস্ট্যাম্প URL অনুলিপি বোতাম দেখান</string>
-  <string name="revanced_copy_video_url_timestamp_summary_on">বোতামটি দেখানো হয়েছে। টাইমস্ট্যাম্প সহ ভিডিও URL কপি করতে আলতো চাপুন। টাইমস্ট্যাম্প ছাড়া কপি করতে টিপুন এবং ধরে রাখুন।</string>
-  <string name="revanced_copy_video_url_timestamp_summary_off">বোতাম প্রদর্শিত হয়নি</string>
+  <string name="revanced_copy_video_url_timestamp_summary_on">টাইমস্ট্যাম্প ইউআরএল কপি বোতাম দেখানো আছে। টাইমস্ট্যাম্প সহ ভিডিও ইউআরএল কপি করতে ট্যাপ করুন। টাইমস্ট্যাম্প ছাড়া কপি করতে ট্যাপ করে ধরে রাখুন</string>
+  <string name="revanced_copy_video_url_timestamp_summary_off">টাইমস্ট্যাম্প ইউআরএল কপি বোতাম দেখানো নেই</string>
   </patch>
   <patch id="interaction.dialog.removeViewerDiscretionDialogPatch">
   <string name="revanced_remove_viewer_discretion_dialog_title">দর্শকের বিচক্ষণতা ডায়ালগ সরান</string>
@@ -468,7 +557,7 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
   <string name="revanced_remove_viewer_discretion_dialog_user_dialog_message">এটি বয়সের সীমাবদ্ধতাকে বাইপাস করে না। এটা শুধু স্বয়ংক্রিয়ভাবে গ্রহণ করে।</string>
   </patch>
   <patch id="layout.hide.signintotv.disableSignInToTvPopupPatch">
-  <string name="revanced_disable_signin_to_tv_popup_title">টিভিতে সাইন ইন পপআপ অক্ষম করুন</string>
+  <string name="revanced_disable_signin_to_tv_popup_title">\'টিভি-তে সাইন ইন করুন\' পপআপ নিষ্ক্রিয় করুন</string>
   <string name="revanced_disable_signin_to_tv_popup_summary_on">টিভিতে সাইন ইন পপআপ অক্ষম করা হয়েছে</string>
   <string name="revanced_disable_signin_to_tv_popup_summary_off">টিভিতে সাইন ইন পপআপ সক্ষম করা হয়েছে</string>
   </patch>
@@ -582,6 +671,10 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
   <string name="revanced_hide_stop_ads_button_title">বিজ্ঞাপন বন্ধ করুন লুকান</string>
   <string name="revanced_hide_stop_ads_button_summary_on">বিজ্ঞাপন বন্ধ করুন বোতামটি লুকানো আছে</string>
   <string name="revanced_hide_stop_ads_button_summary_off">বিজ্ঞাপন বন্ধ করুন বোতামটি দেখানো হচ্ছে</string>
+  <!-- Button does not have any text and is only shown as an icon, and only when the video information area is collapsed to a compact state. -->
+  <string name="revanced_hide_comments_button_title">মন্তব্য লুকান</string>
+  <string name="revanced_hide_comments_button_summary_on">মন্তব্য বোতাম লুকানো আছে</string>
+  <string name="revanced_hide_comments_button_summary_off">মন্তব্য বোতাম দেখানো আছে</string>
   <!-- 'Report' should be translated with the same localized wording that YouTube displays.
                   This button usually only shows on live streams. -->
   <string name="revanced_hide_report_button_title">Report লুকান</string>
@@ -596,7 +689,7 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
   <string name="revanced_hide_download_button_summary_on">ডাউনলোড বোতাম লুকানো আছে</string>
   <string name="revanced_hide_download_button_summary_off">ডাউনলোড বোতাম দেখানো হয়েছে</string>
   <!-- 'Hype' should be translated with the same localized wording that YouTube displays.
-                  This button only shows on videos uploaded by the logged in user. -->
+                  This button only shows on videos uploaded by the logged-in user. -->
   <string name="revanced_hide_hype_button_title">হাইপ লুকান</string>
   <string name="revanced_hide_hype_button_summary_on">হাইপ বোতাম লুকানো আছে</string>
   <string name="revanced_hide_hype_button_summary_off">হাইপ বাটন দেখানো হয়েছে</string>
@@ -705,23 +798,23 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
   <string name="revanced_hide_player_flyout_speed_title">প্লেব্যাকের স্পিড লুকান</string>
   <string name="revanced_hide_player_flyout_speed_summary_on">প্লেব্যাকের স্পিড মেনু লুকিয়ে রয়েছে</string>
   <string name="revanced_hide_player_flyout_speed_summary_off">প্লেব্যাকের স্পিড মেনু প্রদর্শিত হয়েছে</string>
-  <!-- 'More info' should be translated using the same localized wording YouTube displays for the menu item.
-                  This menu only appears for some videos. Translate the name normally if the menu cannot be found. -->
-  <string name="revanced_hide_player_flyout_more_info_title">আরো তথ্য লুকান</string>
-  <string name="revanced_hide_player_flyout_more_info_summary_on">আরও তথ্য মেনু লুকানো আছে</string>
-  <string name="revanced_hide_player_flyout_more_info_summary_off">আরও তথ্য মেনু দেখানো হয়</string>
   <!-- 'Lock screen' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="revanced_hide_player_flyout_lock_screen_title">লক স্ক্রীন লুকান</string>
   <string name="revanced_hide_player_flyout_lock_screen_summary_on">লক স্ক্রীন মেনু লুকানো আছে</string>
   <string name="revanced_hide_player_flyout_lock_screen_summary_off">লক স্ক্রিন মেনু দেখানো হয়েছে</string>
+  <!-- 'Listen with YouTube Music' should be translated using the same localized wording YouTube displays for the menu item. -->
+  <string name="revanced_hide_player_flyout_listen_with_youtube_music_title">ইউটিউব মিউজিক দিয়ে শুনুন লুকান</string>
+  <string name="revanced_hide_player_flyout_listen_with_youtube_music_summary_on">ইউটিউব মিউজিক দিয়ে শুনুন মেনু লুকানো আছে</string>
+  <string name="revanced_hide_player_flyout_listen_with_youtube_music_summary_off">ইউটিউব মিউজিক দিয়ে শুনুন মেনু দেখানো আছে</string>
   <!-- 'Audio track' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="revanced_hide_player_flyout_audio_track_title">অডিও ট্র্যাক লুকান</string>
   <string name="revanced_hide_player_flyout_audio_track_summary_on">অডিও ট্র্যাক মেনু লুকানো আছে</string>
   <string name="revanced_hide_player_flyout_audio_track_summary_off">অডিও ট্র্যাক মেনু দেখানো হয়</string>
-  <!-- 'Spoof video streams' should be the same translation used for 'revanced_spoof_video_streams_screen_title'. -->
+  <!-- 'Spoof video streams' should be the same translation used for 'revanced_spoof_video_streams_screen_title'.
+                  'Android No SDK' must be kept untranslated. -->
   <string name="revanced_hide_player_flyout_audio_track_not_available">"অডিও ট্র্যাক মেনু লুকানো আছে
 
-অডিও ট্র্যাক মেনু দেখানোর জন্য, 'ভিডিও স্ট্রিম স্পুফ করুন' কে iPadOS এ পরিবর্তন করুন"</string>
+অডিও ট্র্যাক মেনু দেখাতে, 'Spoof video streams' কে 'Android No SDK'-তে পরিবর্তন করুন।"</string>
   <!-- 'Watch in VR' should be translated using the same localized wording YouTube displays for the menu item. -->
   <string name="revanced_hide_player_flyout_watch_in_vr_title">ভিআর-এ ঘড়ি লুকান</string>
   <string name="revanced_hide_player_flyout_watch_in_vr_summary_on">ভিআর মেনুতে দেখুন লুকানো আছে</string>
@@ -751,7 +844,7 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
   <string name="revanced_hide_player_previous_next_buttons_summary_on">বোতাম লুকানো হয়</string>
   <string name="revanced_hide_player_previous_next_buttons_summary_off">বোতাম দেখানো হয়</string>
   </patch>
-  <patch id="layout.hide.endscreencards.hideEndscreenCardsResourcePatch">
+  <patch id="layout.hide.endscreencards.hideEndScreenCardsResourcePatch">
   <string name="revanced_hide_endscreen_cards_title">শেষ স্ক্রীন কার্ড লুকান</string>
   <string name="revanced_hide_endscreen_cards_summary_on">শেষ স্ক্রীন কার্ড লুকিয়ে রয়েছে</string>
   <string name="revanced_hide_endscreen_cards_summary_off">শেষ স্ক্রীন কার্ড প্রদর্শিত হয়েছে</string>
@@ -797,13 +890,16 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
   <string name="revanced_hide_shorts_history_title">Shortsগুলিকে ওয়াচ ইতিহাসে লুকান</string>
   <string name="revanced_hide_shorts_history_summary_on">ওয়াচ হিস্ট্রিতে লুকানো</string>
   <string name="revanced_hide_shorts_history_summary_off">ওয়াচ ইতিহাসে দেখানো</string>
-  <string name="revanced_hide_shorts_super_thanks_button_title">সুপার থ্যাঙ্কস বোতামটি লুকান</string>
+  <string name="revanced_hide_shorts_auto_dubbed_label_title">\'স্বয়ংক্রিয়-ডাবড\' লেবেল লুকান</string>
+  <string name="revanced_hide_shorts_auto_dubbed_label_summary_on">স্বয়ংক্রিয় ডাব করা লেবেল লুকানো হয়েছে</string>
+  <string name="revanced_hide_shorts_auto_dubbed_label_summary_off">স্বয়ংক্রিয় ডাব করা লেবেল দেখা যাচ্ছে</string>
+  <string name="revanced_hide_shorts_super_thanks_button_title">\'সুপার থ্যাঙ্কস কিনুন\' বোতাম লুকান</string>
   <string name="revanced_hide_shorts_super_thanks_button_summary_on">সুপার থ্যাঙ্কস কিনুন বোতামটি লুকানো আছে</string>
   <string name="revanced_hide_shorts_super_thanks_button_summary_off">সুপার থ্যাঙ্কস কিনুন বোতামটি দেখানো হয়েছে</string>
   <string name="revanced_hide_shorts_effect_button_title">ইফেক্ট বোতাম লুকান</string>
   <string name="revanced_hide_shorts_effect_button_summary_on">ইফেক্ট বাটন লুকানো আছে</string>
   <string name="revanced_hide_shorts_effect_button_summary_off">ইফেক্ট বাটন দেখানো আছে</string>
-  <string name="revanced_hide_shorts_green_screen_button_title">গ্রিন স্ক্রিন বোতামটি লুকান</string>
+  <string name="revanced_hide_shorts_green_screen_button_title">\'গ্রিন স্ক্রিন\' বোতাম লুকান</string>
   <string name="revanced_hide_shorts_green_screen_button_summary_on">সবুজ পর্দা বোতাম লুকানো আছে</string>
   <string name="revanced_hide_shorts_green_screen_button_summary_off">সবুজ পর্দা বোতাম দেখানো হচ্ছে</string>
   <string name="revanced_hide_shorts_hashtag_button_title">হ্যাশট্যাগ বোতাম লুকান</string>
@@ -813,10 +909,13 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
   <string name="revanced_hide_shorts_join_button_title">সামিল হও বোতামটি লুকান</string>
   <string name="revanced_hide_shorts_join_button_summary_on">জয়েন করুন বোতাম লুকিয়ে রয়েছে</string>
   <string name="revanced_hide_shorts_join_button_summary_off">জয়েন করুন বোতাম প্রদর্শিত হয়েছে</string>
+  <string name="revanced_hide_shorts_live_preview_title">সরাসরি পূর্বরূপ লুকান</string>
+  <string name="revanced_hide_shorts_live_preview_summary_on">লাইভ প্রিভিউ লুকানো আছে</string>
+  <string name="revanced_hide_shorts_live_preview_summary_off">লাইভ প্রিভিউ দেখানো হয়েছে</string>
   <string name="revanced_hide_shorts_location_label_title">অবস্থান লেবেল লুকান</string>
   <string name="revanced_hide_shorts_location_label_summary_on">অবস্থান লেবেল লুকিয়ে রয়েছে</string>
   <string name="revanced_hide_shorts_location_label_summary_off">অবস্থান লেবেল প্রদর্শিত হয়েছে</string>
-  <string name="revanced_hide_shorts_new_posts_button_title">নতুন পোস্ট বোতাম লুকান</string>
+  <string name="revanced_hide_shorts_new_posts_button_title">\'নতুন পোস্ট\' বোতাম লুকান</string>
   <string name="revanced_hide_shorts_new_posts_button_summary_on">নতুন পোস্ট বোতাম লুকানো হয়েছে</string>
   <string name="revanced_hide_shorts_new_posts_button_summary_off">নতুন পোস্ট বোতাম দেখানো হয়েছে</string>
   <string name="revanced_hide_shorts_paused_overlay_buttons_title">থেমে থাকা ওভারলে বোতাম লুকান</string>
@@ -825,7 +924,7 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
   <string name="revanced_hide_shorts_preview_comment_title">Preview comment লুকান</string>
   <string name="revanced_hide_shorts_preview_comment_summary_on">Preview comment লুকানো আছে</string>
   <string name="revanced_hide_shorts_preview_comment_summary_off">Preview comment দেখানো হয়েছে</string>
-  <string name="revanced_hide_shorts_save_sound_button_title">সেভ মিউজিক বোতামটি লুকান</string>
+  <string name="revanced_hide_shorts_save_sound_button_title">\'মিউজিক সেভ করুন\' বোতাম লুকান</string>
   <string name="revanced_hide_shorts_save_sound_button_summary_on">Save music বোতাম লুকানো আছে</string>
   <string name="revanced_hide_shorts_save_sound_button_summary_off">Save music বোতাম দেখানো হচ্ছে</string>
   <string name="revanced_hide_shorts_search_suggestions_title">অনুসন্ধান পরামর্শগুলি লুকান</string>
@@ -846,10 +945,10 @@ MicroG-এর জন্য ব্যাটারি অপ্টিমাইজ�
   <string name="revanced_hide_shorts_upcoming_button_title">আসন্ন বোতামটি লুকান</string>
   <string name="revanced_hide_shorts_upcoming_button_summary_on">আগামী বোতাম লুকানো আছে</string>
   <string name="revanced_hide_shorts_upcoming_button_summary_off">আগামী বোতাম দেখানো হচ্ছে</string>
-  <string name="revanced_hide_shorts_use_sound_button_title">এই সাউন্ড বাটনটি লুকান</string>
+  <string name="revanced_hide_shorts_use_sound_button_title">\'এই সাউন্ড ব্যবহার করুন\' বোতাম লুকান</string>
   <string name="revanced_hide_shorts_use_sound_button_summary_on">এই সাউন্ড বাটনটি লুকানো আছে</string>
   <string name="revanced_hide_shorts_use_sound_button_summary_off">এই সাউন্ড বাটনটি দেখা যাচ্ছে</string>
-  <string name="revanced_hide_shorts_use_template_button_title">\"এই টেমপ্লেট ব্যবহার করুন\" বোতাম লুকান</string>
+  <string name="revanced_hide_shorts_use_template_button_title">\'এই টেমপ্লেট ব্যবহার করুন\' বোতাম লুকান</string>
   <string name="revanced_hide_shorts_use_template_button_summary_on">এই টেমপ্লেট বাটনটি লুকানো আছে</string>
   <string name="revanced_hide_shorts_use_template_button_summary_off">\"এই টেমপ্লেট ব্যবহার করুন\" বোতামটি দেখানো হয়েছে</string>
   <string name="revanced_hide_shorts_like_fountain_title">লাইক বোতাম ফাউন্টেন অ্যানিমেশনটি লুকান</string>
@@ -1052,9 +1151,9 @@ YouTube সেটিংসে অটো প্লে পরিবর্তন �
   <string name="revanced_sb_guidelines_popup_already_read">ইতোমধ্যে পড়া হয়েছে</string>
   <string name="revanced_sb_guidelines_popup_open">আমাকে দেখান</string>
   <string name="revanced_sb_general">সাধারণ</string>
-  <string name="revanced_sb_toast_on_connection_error_title">API উপলভ্য না থাকলে একটি টোস্ট দেখান</string>
-  <string name="revanced_sb_toast_on_connection_error_summary_on">SponsorBlock উপলভ্য না হলে টোস্ট দেখানো হয়</string>
-  <string name="revanced_sb_toast_on_connection_error_summary_off">SponsorBlock উপলভ্য না হলে টোস্ট দেখানো হয় না</string>
+  <string name="revanced_sb_toast_on_connection_error">API উপলভ্য না থাকলে একটি টোস্ট দেখান</string>
+  <string name="revanced_sb_toast_on_connection_error_sum_on">SponsorBlock উপলভ্য না হলে টোস্ট দেখানো হয়</string>
+  <string name="revanced_sb_toast_on_connection_error_sum_off">SponsorBlock উপলভ্য না হলে টোস্ট দেখানো হয় না</string>
   <string name="revanced_sb_general_skipcount">স্কিপ কাউন্ট ট্র্যাকিং সক্রিয় করুন</string>
   <string name="revanced_sb_general_skipcount_sum_on">SponsorBlock লিডারবোর্ডে জানান যে কত সময় সংরক্ষিত হয়েছে। সেগমেন্ট স্কিপ করা হলে লিডারবোর্ডে একটি বার্তা প্রেরণ করা হয়</string>
   <string name="revanced_sb_general_skipcount_sum_off">স্কিপ কাউন্ট ট্র্যাকিং সক্রিয় হয়নি</string>
@@ -1238,8 +1337,10 @@ YouTube সেটিংসে অটো প্লে পরিবর্তন �
 
 পরে যদি বন্ধ করা হয়, UI বাগ এড়াতে অ্যাপ্লিকেশন ডেটা পরিষ্কার করার পরামর্শ দেওয়া হয়।"</string>
   <string name="revanced_spoof_app_version_target_title">স্পুফ অ্যাপ সংস্করণ লক্ষ্য</string>
-  <string name="revanced_spoof_app_version_target_entry_1">19.35.36 - পুরনো Shorts প্লেয়ার আইকন পুনরুদ্ধার করুন</string>
-  <string name="revanced_spoof_app_version_target_entry_2">19.01.34 - পুরনো নেভিগেশন আইকন পুনরুদ্ধার করুন</string>
+  <string name="revanced_spoof_app_version_target_entry_1">20.13.41 - প্রসারিত নয় এমন ভিডিও অ্যাকশন বার পুনরুদ্ধার করুন</string>
+  <string name="revanced_spoof_app_version_target_entry_2">20.05.46 - প্রতিলিপি কার্যকারিতা পুনরুদ্ধার করুন</string>
+  <string name="revanced_spoof_app_version_target_entry_3">19.35.36 - পুরনো Shorts প্লেয়ার আইকন পুনরুদ্ধার করুন</string>
+  <string name="revanced_spoof_app_version_target_entry_4">19.01.34 - পুরনো নেভিগেশন আইকন পুনরুদ্ধার করুন</string>
   </patch>
   <patch id="layout.startpage.changeStartPagePatch">
   <string name="revanced_change_start_page_title">শুরুর পৃষ্ঠা পরিবর্তন করুন</string>
@@ -1304,25 +1405,25 @@ YouTube সেটিংসে অটো প্লে পরিবর্তন �
   <string name="revanced_miniplayer_type_entry_5">মর্ডান ২</string>
   <string name="revanced_miniplayer_type_entry_6">মর্ডান ৩</string>
   <string name="revanced_miniplayer_type_entry_7">আধুনিক ৪</string>
-  <string name="revanced_miniplayer_rounded_corners_title">গোলাকার কোণ সক্ষম করুন</string>
-  <string name="revanced_miniplayer_rounded_corners_summary_on">কোণগুলি গোলাকার</string>
-  <string name="revanced_miniplayer_rounded_corners_summary_off">কোণগুলি বর্গাকার</string>
+  <string name="revanced_miniplayer_disable_rounded_corners_title">গোলাকার কোণা নিষ্ক্রিয় করুন</string>
+  <string name="revanced_miniplayer_disable_rounded_corners_summary_on">কোণগুলি বর্গাকার</string>
+  <string name="revanced_miniplayer_disable_rounded_corners_summary_off">কোণগুলি গোলাকার</string>
   <string name="revanced_miniplayer_double_tap_action_title">ডাবল-ট্যাপ এবং পিঞ্চ টু রিসাইজ সক্ষম করুন</string>
   <string name="revanced_miniplayer_double_tap_action_summary_on">"ডাবল-ট্যাপ করার ক্রিয়া এবং আকার পরিবর্তন করার জন্য চিমটি দেওয়া সক্রিয়
 
 • miniplayer আকার বৃদ্ধি করতে ডাবল ট্যাপ করুন
 • মূল আকার পুনরুদ্ধার করতে আবার ডাবল ট্যাপ করুন"</string>
   <string name="revanced_miniplayer_double_tap_action_summary_off">ডাবল-ট্যাপ অ্যাকশন এবং পিঞ্চ টু রিসাইজ অক্ষম</string>
-  <string name="revanced_miniplayer_drag_and_drop_title">ড্র্যাগ এবং ড্রপ সক্ষম করুন</string>
-  <string name="revanced_miniplayer_drag_and_drop_summary_on">"ড্র্যাগ এবং ড্রপ সক্রিয়
+  <string name="revanced_miniplayer_disable_drag_and_drop_title">টেনে-ছেড়ে দেওয়া নিষ্ক্রিয় করুন</string>
+  <string name="revanced_miniplayer_disable_drag_and_drop_summary_on">ড্র্যাগ এবং ড্রপ অক্ষম</string>
+  <string name="revanced_miniplayer_disable_drag_and_drop_summary_off">"ড্র্যাগ এবং ড্রপ সক্রিয়
 
 Miniplayer স্ক্রিনের যেকোনো কোণে টানা যাবে"</string>
-  <string name="revanced_miniplayer_drag_and_drop_summary_off">ড্র্যাগ এবং ড্রপ অক্ষম</string>
-  <string name="revanced_miniplayer_horizontal_drag_title">অনুভূমিক ড্র্যাগ অঙ্গভঙ্গি সক্ষম করুন</string>
-  <string name="revanced_miniplayer_horizontal_drag_summary_on">"ক্ষैতিকভাবে টানার ভঙ্গি সক্রিয়
+  <string name="revanced_miniplayer_disable_horizontal_drag_title">অনুভূমিক টেনে নেওয়ার ভঙ্গি নিষ্ক্রিয় করুন</string>
+  <string name="revanced_miniplayer_disable_horizontal_drag_summary_on">অনুভূমিক ড্র্যাগ অঙ্গভঙ্গি অক্ষম</string>
+  <string name="revanced_miniplayer_disable_horizontal_drag_summary_off">"ক্ষैতিকভাবে টানার ভঙ্গি সক্রিয়
 
 Miniplayer স্ক্রিন থেকে বামে বা ডানে টানা যাবে"</string>
-  <string name="revanced_miniplayer_horizontal_drag_summary_off">অনুভূমিক ড্র্যাগ অঙ্গভঙ্গি অক্ষম</string>
   <string name="revanced_miniplayer_hide_overlay_buttons_title">ওভারলে বোতাম লুকান</string>
   <string name="revanced_miniplayer_hide_overlay_buttons_summary_on">ওভারলে বোতাম লুকানো আছে</string>
   <string name="revanced_miniplayer_hide_overlay_buttons_summary_off">ওভারলে বোতাম দেখানো হয়েছে</string>
@@ -1355,11 +1456,13 @@ Miniplayer স্ক্রিন থেকে বামে বা ডানে �
   <string name="revanced_seekbar_custom_color_accent_summary">সিকবারের এক্সেন্ট রঙ</string>
   <string name="revanced_seekbar_custom_color_invalid">অবৈধ সিকবার রঙ মান</string>
   </patch>
+  <patch id="layout.branding.customBrandingPatch">
+  </patch>
   <patch id="layout.branding.changeHeaderPatch">
   <string name="revanced_header_logo_title">হেডার লোগো</string>
   <string name="revanced_header_logo_entry_1">ডিফল্ট</string>
   <string name="revanced_header_logo_entry_2">সাধারণ</string>
-  <!-- For this situation "Minimal" means minimalistic. It does not mean small or tiny. -->
+  <!-- Translation of this should be identical to revanced_custom_branding_icon_entry_3 -->
   <string name="revanced_header_logo_entry_5">রিভ্যান্সড মিনিমাল</string>
   <string name="revanced_header_logo_entry_6">কাস্টম</string>
   </patch>
@@ -1414,15 +1517,17 @@ DeArrow সম্পর্কে আরও জানতে এখানে ট�
   <string name="revanced_announcements_connection_failed">ঘোষনাদাতার সাথে সম্পর্ক স্থাপন ব্যর্থ হয়েছে</string>
   <string name="revanced_announcements_dialog_dismiss">বাতিল করুন</string>
   </patch>
-  <patch id="misc.dns.checkWatchHistoryDomainNameResolutionPatch">
-  <string name="revanced_check_watch_history_domain_name_dialog_title">সতর্কীকরণ</string>
-  <string name="revanced_check_watch_history_domain_name_dialog_message">আপনার দেখার ইতিহাস সংরক্ষিত হচ্ছে না।&lt;br&gt;&lt;br&gt;এটি সম্ভবত DNS অ্যাড ব্লকার অথবা নেটওয়ার্ক প্রক্সির কারণে।&lt;br&gt;&lt;br&gt;এটি ঠিক করার জন্য, &lt;b&gt;s.youtube.com&lt;/b&gt;  সাদা তালিকাভুক্ত করুন অথবা সকল DNS ব্লকার এবং প্রক্সি বন্ধ করুন।</string>
-  <string name="revanced_check_watch_history_domain_name_dialog_ignore">আবার দেখাবেন না</string>
+  <patch id="misc.loopvideo.loopVideoPatch">
+  <string name="revanced_loop_video_title">লুপ ভিডিও সক্ষম করুন</string>
+  <string name="revanced_loop_video_summary_on">ভিডিও লুপ হবে</string>
+  <string name="revanced_loop_video_summary_off">ভিডিও লুপ হবে না</string>
   </patch>
-  <patch id="misc.autorepeat.autoRepeatPatch">
-  <string name="revanced_auto_repeat_title">স্বয়ংক্রিয়ভাবে-আবার দেখানো সক্রিয় করুন</string>
-  <string name="revanced_auto_repeat_summary_on">স্বয়ংক্রিয়ভাবে-আবার দেখানো সক্রিয় হয়েছে</string>
-  <string name="revanced_auto_repeat_summary_off">স্বয়ংক্রিয়ভাবে-আবার দেখানো সক্রিয় নিষ্ক্রিয় হয়েছে</string>
+  <patch id="misc.loopvideo.button.loopVideoButtonPatch">
+  <string name="revanced_loop_video_button_title">লুপ ভিডিও বোতাম দেখান</string>
+  <string name="revanced_loop_video_button_summary_on">বোতামটি দেখানো হয়েছে</string>
+  <string name="revanced_loop_video_button_summary_off">বোতামটি দেখানো হয়নি</string>
+  <string name="revanced_loop_video_button_toast_on">লুপ ভিডিও চালু আছে</string>
+  <string name="revanced_loop_video_button_toast_off">লুপ ভিডিও বন্ধ আছে</string>
   </patch>
   <patch id="misc.dimensions.spoof.spoofDeviceDimensionsPatch">
   <string name="revanced_spoof_device_dimensions_title">ডিভাইস ডাইমেনশন স্পুফ করুন</string>
@@ -1463,18 +1568,6 @@ DeArrow সম্পর্কে আরও জানতে এখানে ট�
   <string name="revanced_external_browser_summary_on">বাহ্যিক ব্রাউজারে লিঙ্ক খোলা হচ্ছে</string>
   <string name="revanced_external_browser_summary_off">ইন-অ্যাপ ব্রাউজারে লিঙ্ক খোলা হচ্ছে</string>
   </patch>
-  <patch id="misc.privacy.removeTrackingQueryParameterPatch">
-  <string name="revanced_remove_tracking_query_parameter_title">ট্র্যাকিং করার প্যারামিটার মুছুন</string>
-  <string name="revanced_remove_tracking_query_parameter_summary_on">লিংক থেকে ট্র্যাকিং করার প্যারামিটার মুছে ফেলা হয়েছে</string>
-  <string name="revanced_remove_tracking_query_parameter_summary_off">লিংক থেকে ট্র্যাকিং করার প্যারামিটার মুছে ফেলা হয়নি</string>
-  </patch>
-  <patch id="video.audio.forceOriginalAudioPatch">
-  <string name="revanced_force_original_audio_title">মূল অডিও ভাষা বলপূর্বক চালু করুন</string>
-  <string name="revanced_force_original_audio_summary_on">মূল অডিও ভাষা ব্যবহার করা হচ্ছে</string>
-  <string name="revanced_force_original_audio_summary_off">ডিফল্ট অডিও ব্যবহার করছে</string>
-  <!-- 'Spoof video streams' should be the same translation used for 'revanced_spoof_video_streams_screen_title'. -->
-  <string name="revanced_force_original_audio_not_available">এই বৈশিষ্ট্যটি ব্যবহার করতে, \'স্পুফ ভিডিও স্ট্রীম\' কে iOS TV-তে পরিবর্তন করুন</string>
-  </patch>
   <patch id="video.quality.rememberVideoQualityPatch">
   <!-- Translations should use the same text as 'revanced_custom_playback_speeds_auto'. -->
   <string name="revanced_video_quality_default_entry_1">স্বতস্ফূর্তভাবে</string>
@@ -1498,13 +1591,13 @@ DeArrow সম্পর্কে আরও জানতে এখানে ট�
   </patch>
   <patch id="video.speed.button.playbackSpeedButtonPatch">
   <string name="revanced_playback_speed_dialog_button_title">স্পিড ডায়ালগ বোতাম দেখান</string>
-  <string name="revanced_playback_speed_dialog_button_summary_on">বোতামটি দেখানো হয়েছে। প্লেব্যাক স্পীড ডিফল্টে রিসেট করতে ট্যাপ করে ধরে রাখুন।</string>
-  <string name="revanced_playback_speed_dialog_button_summary_off">বোতাম প্রদর্শিত হয়নি</string>
+  <string name="revanced_playback_speed_dialog_button_summary_on">স্পিড ডায়ালগ বোতাম দেখানো আছে। প্লেব্যাক স্পিড ডিফল্টে রিসেট করতে ট্যাপ করে ধরে রাখুন</string>
+  <string name="revanced_playback_speed_dialog_button_summary_off">স্পিড ডায়ালগ বোতাম দেখানো নেই</string>
   </patch>
   <patch id="video.quality.button.videoQualityDialogButtonPatch">
   <string name="revanced_video_quality_dialog_button_title">ভিডিও গুণমান বোতাম দেখান</string>
-  <string name="revanced_video_quality_dialog_button_summary_on">বোতামটি দেখানো হয়েছে। গুণমান ডিফল্টে রিসেট করতে ট্যাপ করে ধরে রাখুন।</string>
-  <string name="revanced_video_quality_dialog_button_summary_off">বোতামটি দেখানো হয়নি।</string>
+  <string name="revanced_video_quality_dialog_button_summary_on">ভিডিও কোয়ালিটি বোতাম দেখানো আছে। কোয়ালিটি ডিফল্টে রিসেট করতে ট্যাপ করে ধরে রাখুন</string>
+  <string name="revanced_video_quality_dialog_button_summary_off">ভিডিও কোয়ালিটি বোতাম দেখানো নেই</string>
   </patch>
   <patch id="video.speed.custom.customPlaybackSpeedPatch">
   <string name="revanced_custom_speed_menu_title">কাস্টম প্লেব্যাক গতি মেনু</string>
@@ -1531,10 +1624,22 @@ DeArrow সম্পর্কে আরও জানতে এখানে ট�
   <string name="revanced_playback_speed_default_title">প্লেব্যাকের মূল স্পিড</string>
   <string name="revanced_remember_playback_speed_toast">মূল স্পিড পরিবর্তন হচ্ছে: %s</string>
   </patch>
-  <patch id="video.hdr.disableHdrPatch">
+  <patch id="video.codecs.disableVideoCodecsPatch">
   <string name="revanced_disable_hdr_video_title">HDR ভিডিও নিষ্ক্রিয় করুন</string>
   <string name="revanced_disable_hdr_video_summary_on">HDR ভিডিও নিষ্ক্রিয় করা হয়েছে</string>
   <string name="revanced_disable_hdr_video_summary_off">HDR ভিডিও সক্রিয় হয়েছে</string>
+  <string name="revanced_force_avc_codec_title">AVC (H.264) প্রয়োগ করুন</string>
+  <string name="revanced_force_avc_codec_summary_on">ভিডিও কোডেক AVC (H.264) তে প্রয়োগ করা হয়েছে</string>
+  <string name="revanced_force_avc_codec_summary_off">ভিডিও কোডেক স্বয়ংক্রিয়ভাবে নির্ধারিত হয়</string>
+  <string name="revanced_force_avc_codec_user_dialog_message">"সুবিধা:
+• ব্যাটারির আয়ু উন্নত করতে পারে
+• পুরনো ডিভাইসে অনুপস্থিত ভিডিও রেজোলিউশন পুনরুদ্ধার করতে পারে
+
+সীমাবদ্ধতা:
+• সর্বোচ্চ রেজোলিউশন 1080p
+• VP9 বা AV1 এর চেয়ে ভিডিও প্লেব্যাকে বেশি ইন্টারনেট ডেটা ব্যবহার হবে
+• HDR ভিডিও AVC ব্যবহার করবে না
+• কিছু ডিভাইস AVC জোর করে ব্যবহার করতে পারে না"</string>
   </patch>
   <patch id="video.quality.advancedVideoQualityMenuPatch">
   <string name="revanced_advanced_video_quality_menu_title">উন্নত ভিডিও গুণমান মেনু দেখান</string>
@@ -1547,23 +1652,31 @@ DeArrow সম্পর্কে আরও জানতে এখানে ট�
   <string name="revanced_slide_to_seek_summary_off">ভিডিওর নির্দিষ্ট অংশে যেতে টানুন সক্রিয় করা হয়নি</string>
   </patch>
   <patch id="misc.fix.playback.spoofVideoStreamsPatch">
+  <string name="revanced_spoof_video_streams_av1_title">অ্যান্ড্রয়েড VR AV1 অনুমতি দিন</string>
+  <string name="revanced_spoof_video_streams_av1_summary_on">"ভিডিও কোডেক হল AVC (H.264), VP9, অথবা AV1
+
+প্লেব্যাক আটকে যেতে পারে বা ফ্রেম বাদ দিতে পারে"</string>
+  <string name="revanced_spoof_video_streams_av1_summary_off">ভিডিও কোডেক হল AVC (H.264) অথবা VP9</string>
+  <string name="revanced_spoof_video_streams_av1_user_dialog_message">"এই সেটিংটি চালু করলে সফটওয়্যার AV1 ডিকোডিং ব্যবহার হতে পারে।
+
+AV1 সহ ভিডিও প্লেব্যাক আটকে যেতে পারে বা ফ্রেম বাদ দিতে পারে।"</string>
   <string name="revanced_spoof_video_streams_about_title">স্পুফিংয়ের পার্শ্বপ্রতিক্রিয়া</string>
-  <string name="revanced_spoof_video_streams_about_android_title">Android স্পুফিংয়ের পার্শ্বপ্রতিক্রিয়া</string>
-  <string name="revanced_spoof_video_streams_about_android_summary">"• অডিও ট্র্যাক মেনু অনুপস্থিত
-• স্থিতিশীল ভলিউম উপলব্ধ নেই"</string>
-  <string name="revanced_spoof_video_streams_about_ipados_summary">• ভিডিও ১:০০ মিনিটে বন্ধ হতে পারে, অথবা কিছু অঞ্চলে উপলব্ধ নাও হতে পারে</string>
   <string name="revanced_spoof_video_streams_about_experimental">• পরীক্ষামূলক ক্লায়েন্ট এবং যেকোনো সময় কাজ করা বন্ধ করতে পারে</string>
+  <string name="revanced_spoof_video_streams_about_playback_failure">• ভিডিও ১:০০ মিনিটে বন্ধ হতে পারে, অথবা কিছু অঞ্চলে উপলব্ধ নাও হতে পারে</string>
+  <string name="revanced_spoof_video_streams_about_no_audio_tracks">• অডিও ট্র্যাক মেনু অনুপস্থিত</string>
   <string name="revanced_spoof_video_streams_about_no_av1">• কোনো AV1 ভিডিও কোডেক নেই</string>
+  <string name="revanced_spoof_video_streams_about_no_stable_volume">• স্থিতিশীল ভলিউম উপলব্ধ নেই</string>
   <string name="revanced_spoof_video_streams_about_kids_videos">• লগআউট করা হলে বা ছদ্মবেশী মোডে বাচ্চাদের ভিডিও চলতে নাও পারে</string>
+  <!-- "Force original audio" should use the same text as revanced_force_original_audio_title -->
+  <string name="revanced_spoof_video_streams_about_no_force_original_audio">• মূল অডিও জোরপূর্বক উপলব্ধ নেই</string>
   <string name="revanced_spoof_streaming_data_stats_for_nerds_title">স্ট্যাটস ফর নার্ডসে দেখান</string>
   <string name="revanced_spoof_streaming_data_stats_for_nerds_summary_on">স্ট্যাটস ফর নার্ডসে ক্লায়েন্ট প্রকার দেখানো হবে</string>
   <string name="revanced_spoof_streaming_data_stats_for_nerds_summary_off">স্ট্যাটস ফর নার্ডসে ক্লায়েন্ট লুকানো হবে</string>
-  <string name="revanced_spoof_video_streams_language_title">অডিও স্ট্রিম ভাষা</string>
-  <!-- 'Force original audio language' should use the same text as revanced_force_original_audio_title -->
-  <string name="revanced_spoof_video_streams_language_not_available">একটি নির্দিষ্ট অডিও ভাষা নির্বাচন করতে, \'মূল অডিও ভাষা জোর করে চালু রাখুন\' বন্ধ করুন</string>
   </patch>
   </app>
   <app id="music">
+  <patch id="layout.branding.customBrandingPatch">
+  </patch>
   <patch id="misc.settings.settingsPatch">
   <string name="revanced_settings_music_screen_0_about_title">সম্পর্কে</string>
   <string name="revanced_settings_music_screen_1_ads_title">বিজ্ঞাপন</string>
@@ -1581,10 +1694,59 @@ DeArrow সম্পর্কে আরও জানতে এখানে ট�
   <string name="revanced_music_play_permanent_repeat_summary_on">স্থায়ী পুনরাবৃত্তি সক্ষম করা হয়েছে</string>
   <string name="revanced_music_play_permanent_repeat_summary_off">স্থায়ী পুনরাবৃত্তি অক্ষম করা হয়েছে</string>
   </patch>
+  <patch id="layout.buttons.hideButtons">
+  <string name="revanced_music_hide_cast_button_title">কাস্ট বোতাম লুকান</string>
+  <string name="revanced_music_hide_cast_button_summary_on">কাস্ট বোতাম লুকানো আছে</string>
+  <string name="revanced_music_hide_cast_button_summary_off">কাস্ট বোতাম দেখানো আছে</string>
+  <string name="revanced_music_hide_history_button_title">ইতিহাস বোতাম লুকান</string>
+  <string name="revanced_music_hide_history_button_summary_on">ইতিহাস বোতাম লুকানো আছে</string>
+  <string name="revanced_music_hide_history_button_summary_off">ইতিহাস বোতাম দেখানো আছে</string>
+  <string name="revanced_music_hide_notification_button_title">বিজ্ঞপ্তি বাটন লুকান</string>
+  <string name="revanced_music_hide_notification_button_summary_on">বিজ্ঞপ্তি বাটন লুকানো আছে</string>
+  <string name="revanced_music_hide_notification_button_summary_off">বিজ্ঞপ্তি বাটন দেখানো হয়েছে</string>
+  <string name="revanced_music_hide_search_button_title">অনুসন্ধান বাটন লুকান</string>
+  <string name="revanced_music_hide_search_button_summary_on">অনুসন্ধান বাটন লুকানো আছে</string>
+  <string name="revanced_music_hide_search_button_summary_off">অনুসন্ধান বাটন দেখানো হয়েছে</string>
+  </patch>
   <patch id="layout.compactheader.hideCategoryBar">
   <string name="revanced_music_hide_category_bar_title">ক্যাটাগরি বার লুকান</string>
   <string name="revanced_music_hide_category_bar_summary_on">ক্যাটাগরি বার লুকানো আছে</string>
   <string name="revanced_music_hide_category_bar_summary_off">ক্যাটাগরি বার দেখানো আছে</string>
+  </patch>
+  <patch id="layout.miniplayercolor.changeMiniplayerColor">
+  <string name="revanced_music_change_miniplayer_color_title">মিনিপ্লেয়ারের রঙ পরিবর্তন করুন</string>
+  <string name="revanced_music_change_miniplayer_color_summary_on">মিনিপ্লেয়ারের রঙ ফুলস্ক্রিন প্লেয়ারের সাথে মেলে</string>
+  <string name="revanced_music_change_miniplayer_color_summary_off">মিনিপ্লেয়ার ডিফল্ট রঙ ব্যবহার করে</string>
+  </patch>
+  <patch id="layout.navigationbar.navigationBarPatch">
+  <string name="revanced_music_navigation_bar_screen_title">নেভিগেশন বার</string>
+  <string name="revanced_music_navigation_bar_screen_summary">নেভিগেশন বারের বোতামগুলি লুকান বা পরিবর্তন করুন</string>
+  <!-- 'Home' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="revanced_music_hide_navigation_bar_home_button_title">হোম লুকান</string>
+  <string name="revanced_music_hide_navigation_bar_home_button_summary_on">হোম বোতাম লুকানো আছে</string>
+  <string name="revanced_music_hide_navigation_bar_home_button_summary_off">হোম বোতাম দেখানো আছে</string>
+  <!-- 'Samples' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="revanced_music_hide_navigation_bar_samples_button_title">স্যাম্পল লুকান</string>
+  <string name="revanced_music_hide_navigation_bar_samples_button_summary_on">স্যাম্পল বোতাম লুকানো আছে</string>
+  <string name="revanced_music_hide_navigation_bar_samples_button_summary_off">স্যাম্পল বোতাম দেখানো আছে</string>
+  <!-- 'Explore' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="revanced_music_hide_navigation_bar_explore_button_title">এক্সপ্লোর লুকান</string>
+  <string name="revanced_music_hide_navigation_bar_explore_button_summary_on">অনুসন্ধান বোতাম লুকানো আছে</string>
+  <string name="revanced_music_hide_navigation_bar_explore_button_summary_off">অনুসন্ধান বোতাম দেখানো আছে</string>
+  <!-- 'Library' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="revanced_music_hide_navigation_bar_library_button_title">লাইব্রেরি লুকান</string>
+  <string name="revanced_music_hide_navigation_bar_library_button_summary_on">লাইব্রেরি বোতাম লুকানো আছে</string>
+  <string name="revanced_music_hide_navigation_bar_library_button_summary_off">লাইব্রেরি বোতাম দেখানো আছে</string>
+  <!-- 'Upgrade' should be translated using the same localized wording YouTube Music displays for the tab. -->
+  <string name="revanced_music_hide_navigation_bar_upgrade_button_title">আপগ্রেড লুকান</string>
+  <string name="revanced_music_hide_navigation_bar_upgrade_button_summary_on">আপগ্রেড বোতাম লুকানো আছে</string>
+  <string name="revanced_music_hide_navigation_bar_upgrade_button_summary_off">আপগ্রেড বোতাম দেখানো আছে</string>
+  <string name="revanced_music_hide_navigation_bar_title">নেভিগেশন বার লুকান</string>
+  <string name="revanced_music_hide_navigation_bar_summary_on">নেভিগেশন বার লুকানো আছে</string>
+  <string name="revanced_music_hide_navigation_bar_summary_off">নেভিগেশন বার দেখানো আছে</string>
+  <string name="revanced_music_hide_navigation_bar_labels_title">নেভিগেশন বোতামের লেবেলগুলি লুকান</string>
+  <string name="revanced_music_hide_navigation_bar_labels_summary_on">লেবেলগুলি লুকানো আছে</string>
+  <string name="revanced_music_hide_navigation_bar_labels_summary_off">লেবেলগুলি দেখানো আছে</string>
   </patch>
   <patch id="layout.premium.hideGetPremiumPatch">
   <string name="revanced_music_hide_get_premium_label_title">\'গেট মিউজিক প্রিমিয়াম\' লেবেল লুকান</string>

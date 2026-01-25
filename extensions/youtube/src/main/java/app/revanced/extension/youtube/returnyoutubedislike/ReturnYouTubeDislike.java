@@ -21,6 +21,7 @@ import android.text.Spanned;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.ImageSpan;
 import android.text.style.ReplacementSpan;
+import android.widget.Toast;
 
 import androidx.annotation.GuardedBy;
 import androidx.annotation.NonNull;
@@ -39,6 +40,7 @@ import java.util.concurrent.TimeoutException;
 
 import app.revanced.extension.shared.Logger;
 import app.revanced.extension.shared.Utils;
+import app.revanced.extension.shared.ui.Dim;
 import app.revanced.extension.youtube.returnyoutubedislike.requests.RYDVoteData;
 import app.revanced.extension.youtube.returnyoutubedislike.requests.ReturnYouTubeDislikeApi;
 import app.revanced.extension.youtube.settings.Settings;
@@ -123,12 +125,12 @@ public class ReturnYouTubeDislike {
 
     static {
         leftSeparatorBounds = new Rect(0, 0,
-                Utils.dipToPixels(1.2f),
-                Utils.dipToPixels(14f));
-        final int middleSeparatorSize = Utils.dipToPixels(3.7f);
+                Dim.dp(1.2f),
+                Dim.dp(14f));
+        final int middleSeparatorSize = Dim.dp(3.7f);
         middleSeparatorBounds = new Rect(0, 0, middleSeparatorSize, middleSeparatorSize);
 
-        leftSeparatorShapePaddingPixels = Utils.dipToPixels(8.4f);
+        leftSeparatorShapePaddingPixels = Dim.dp(8.4f);
 
         leftSeparatorShape = new ShapeDrawable(new RectShape());
         leftSeparatorShape.setBounds(leftSeparatorBounds);
@@ -507,6 +509,11 @@ public class ReturnYouTubeDislike {
         try {
             RYDVoteData votingData = getFetchData(MAX_MILLISECONDS_TO_BLOCK_UI_WAITING_FOR_FETCH);
             if (votingData == null) {
+                // Method automatically prevents showing multiple toasts if the connection failed.
+                // This call is needed here in case the api call did succeed but took too long.
+                ReturnYouTubeDislikeApi.handleConnectionError(
+                        str("revanced_ryd_failure_connection_timeout"),
+                        null, null, Toast.LENGTH_SHORT);
                 Logger.printDebug(() -> "Cannot add dislike to UI (RYD data not available)");
                 return original;
             }

@@ -1,10 +1,10 @@
 package app.revanced.extension.shared.settings.preference;
 
 import static app.revanced.extension.shared.StringRef.str;
-import static app.revanced.extension.shared.Utils.dipToPixels;
 import static app.revanced.extension.shared.requests.Route.Method.GET;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -17,6 +17,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.preference.Preference;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.webkit.WebView;
@@ -39,6 +40,7 @@ import app.revanced.extension.shared.Logger;
 import app.revanced.extension.shared.Utils;
 import app.revanced.extension.shared.requests.Requester;
 import app.revanced.extension.shared.requests.Route;
+import app.revanced.extension.shared.ui.Dim;
 
 /**
  * Opens a dialog showing official links.
@@ -124,6 +126,8 @@ public class ReVancedAboutPreference extends Preference {
 
     {
         setOnPreferenceClickListener(pref -> {
+            Context context = pref.getContext();
+
             // Show a progress spinner if the social links are not fetched yet.
             if (!AboutLinksRoutes.hasFetchedLinks() && Utils.isNetworkConnected()) {
                 // Show a progress spinner, but only if the api fetch takes more than a half a second.
@@ -136,17 +140,18 @@ public class ReVancedAboutPreference extends Preference {
                 handler.postDelayed(showDialogRunnable, delayToShowProgressSpinner);
 
                 Utils.runOnBackgroundThread(() ->
-                        fetchLinksAndShowDialog(handler, showDialogRunnable, progress));
+                        fetchLinksAndShowDialog(context, handler, showDialogRunnable, progress));
             } else {
                 // No network call required and can run now.
-                fetchLinksAndShowDialog(null, null, null);
+                fetchLinksAndShowDialog(context, null, null, null);
             }
 
             return false;
         });
     }
 
-    private void fetchLinksAndShowDialog(@Nullable Handler handler,
+    private void fetchLinksAndShowDialog(Context context,
+                                         @Nullable Handler handler,
                                          Runnable showDialogRunnable,
                                          @Nullable ProgressDialog progress) {
         WebLink[] links = AboutLinksRoutes.fetchAboutLinks();
@@ -163,7 +168,17 @@ public class ReVancedAboutPreference extends Preference {
             if (handler != null) {
                 handler.removeCallbacks(showDialogRunnable);
             }
-            if (progress != null) {
+
+            // Don't continue if the activity is done. To test this tap the
+            // about dialog and immediately press back before the dialog can show.
+            if (context instanceof Activity activity) {
+                if (activity.isFinishing() || activity.isDestroyed()) {
+                    Logger.printDebug(() -> "Not showing about dialog, activity is closed");
+                    return;
+                }
+            }
+
+            if (progress != null && progress.isShowing()) {
                 progress.dismiss();
             }
             new WebViewDialog(getContext(), htmlDialog).show();
@@ -207,11 +222,10 @@ class WebViewDialog extends Dialog {
         LinearLayout mainLayout = new LinearLayout(getContext());
         mainLayout.setOrientation(LinearLayout.VERTICAL);
 
-        final int padding = dipToPixels(10);
-        mainLayout.setPadding(padding, padding, padding, padding);
+        mainLayout.setPadding(Dim.dp10, Dim.dp10, Dim.dp10, Dim.dp10);
         // Set rounded rectangle background.
         ShapeDrawable mainBackground = new ShapeDrawable(new RoundRectShape(
-                Utils.createCornerRadii(28), null, null));
+                Dim.roundedCorners(28), null, null));
         mainBackground.getPaint().setColor(Utils.getDialogBackgroundColor());
         mainLayout.setBackground(mainBackground);
 
@@ -228,10 +242,10 @@ class WebViewDialog extends Dialog {
 
         setContentView(mainLayout);
 
-        // Set dialog window attributes
+        // Set dialog window attributes.
         Window window = getWindow();
         if (window != null) {
-            Utils.setDialogWindowParameters(window);
+            Utils.setDialogWindowParameters(window, Gravity.CENTER, 0, 90, false);
         }
     }
 

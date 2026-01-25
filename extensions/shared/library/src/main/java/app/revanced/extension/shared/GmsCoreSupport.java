@@ -27,12 +27,10 @@ import java.util.Locale;
 
 import app.revanced.extension.shared.requests.Requester;
 import app.revanced.extension.shared.requests.Route;
+import app.revanced.extension.shared.ui.CustomDialog;
 
 @SuppressWarnings("unused")
 public class GmsCoreSupport {
-    private static final String PACKAGE_NAME_YOUTUBE = "com.google.android.youtube";
-    private static final String PACKAGE_NAME_YOUTUBE_MUSIC = "com.google.android.apps.youtube.music";
-
     private static final String GMS_CORE_PACKAGE_NAME
             = getGmsCoreVendorGroupId() + ".android.gms";
     private static final Uri GMS_CORE_PROVIDER
@@ -51,6 +49,20 @@ public class GmsCoreSupport {
      */
     @Nullable
     private static volatile Boolean DONT_KILL_MY_APP_MANUFACTURER_SUPPORTED;
+
+    private static String getOriginalPackageName() {
+       return null; // Modified during patching.
+    }
+
+    /**
+     * @return If the current package name is the same as the original unpatched app.
+     *         If `GmsCore support` was not included during patching, this returns true;
+     */
+    public static boolean isPackageNameOriginal() {
+        String originalPackageName = getOriginalPackageName();
+        return originalPackageName == null
+                || originalPackageName.equals(Utils.getContext().getPackageName());
+    }
 
     private static void open(String queryOrLink) {
         Logger.printInfo(() -> "Opening link: " + queryOrLink);
@@ -80,17 +92,17 @@ public class GmsCoreSupport {
         // Otherwise, if device is in dark mode the dialog is shown with wrong color scheme.
         Utils.runOnMainThreadDelayed(() -> {
             // Create the custom dialog.
-            Pair<Dialog, LinearLayout> dialogPair = Utils.createCustomDialog(
+            Pair<Dialog, LinearLayout> dialogPair = CustomDialog.create(
                     context,
                     str("gms_core_dialog_title"), // Title.
-                    str(dialogMessageRef),        // Message.
-                    null,                         // No EditText.
-                    str(positiveButtonTextRef),   // OK button text.
+                    str(dialogMessageRef), // Message.
+                    null, // No EditText.
+                    str(positiveButtonTextRef), // OK button text.
                     () -> onPositiveClickListener.onClick(null, 0), // Convert DialogInterface.OnClickListener to Runnable.
-                    null,                         // No Cancel button action.
-                    null,                         // No Neutral button text.
-                    null,                         // No Neutral button action.
-                    true                          // Dismiss dialog when onNeutralClick.
+                    null, // No Cancel button action.
+                    null, // No Neutral button text.
+                    null, // No Neutral button action.
+                    true // Dismiss dialog when onNeutralClick.
             );
 
             Dialog dialog = dialogPair.first;
@@ -112,11 +124,10 @@ public class GmsCoreSupport {
             // Verify the user has not included GmsCore for a root installation.
             // GmsCore Support changes the package name, but with a mounted installation
             // all manifest changes are ignored and the original package name is used.
-            String packageName = context.getPackageName();
-            if (packageName.equals(PACKAGE_NAME_YOUTUBE) || packageName.equals(PACKAGE_NAME_YOUTUBE_MUSIC)) {
+            if (isPackageNameOriginal()) {
                 Logger.printInfo(() -> "App is mounted with root, but GmsCore patch was included");
-                // Cannot use localize text here, since the app will load
-                // resources from the unpatched app and all patch strings are missing.
+                // Cannot use localize text here, since the app will load resources
+                // from the unpatched app and all patch strings are missing.
                 Utils.showToastLong("The 'GmsCore support' patch breaks mount installations");
 
                 // Do not exit. If the app exits before launch completes (and without
@@ -249,8 +260,7 @@ public class GmsCoreSupport {
         };
     }
 
-    // Modified by a patch. Do not touch.
     private static String getGmsCoreVendorGroupId() {
-        return "app.revanced";
+        return "app.revanced"; // Modified during patching.
     }
 }

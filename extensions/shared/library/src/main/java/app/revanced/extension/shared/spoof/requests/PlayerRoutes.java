@@ -1,7 +1,5 @@
 package app.revanced.extension.shared.spoof.requests;
 
-import static app.revanced.extension.shared.spoof.ClientType.ANDROID_VR_1_43_32;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -13,7 +11,6 @@ import app.revanced.extension.shared.Logger;
 import app.revanced.extension.shared.requests.Requester;
 import app.revanced.extension.shared.requests.Route;
 import app.revanced.extension.shared.settings.AppLanguage;
-import app.revanced.extension.shared.settings.BaseSettings;
 import app.revanced.extension.shared.spoof.ClientType;
 import app.revanced.extension.shared.spoof.SpoofVideoStreamsPatch;
 
@@ -42,12 +39,9 @@ final class PlayerRoutes {
             JSONObject context = new JSONObject();
 
             AppLanguage language = SpoofVideoStreamsPatch.getLanguageOverride();
-            if (language == null || clientType == ANDROID_VR_1_43_32) {
+            if (language == null) {
                 // Force original audio has not overrode the language.
-                // Or if YT has fallen over to the last unauthenticated client (VR 1.43), then
-                // always use the app language because forcing an audio stream of specific languages
-                // can sometimes fail so it's better to try and load something rather than nothing.
-                language = BaseSettings.SPOOF_VIDEO_STREAMS_LANGUAGE.get();
+                language = AppLanguage.DEFAULT;
             }
             //noinspection ExtractMethodRecommender
             Locale streamLocale = language.getLocale();

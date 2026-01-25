@@ -6,6 +6,7 @@ import app.revanced.patcher.patch.resourcePatch
 import app.revanced.patches.all.misc.resources.addResource
 import app.revanced.patches.all.misc.resources.addResources
 import app.revanced.patches.all.misc.resources.addResourcesPatch
+import app.revanced.patches.shared.layout.branding.addBrandLicensePatch
 import app.revanced.patches.shared.misc.settings.preference.BasePreference
 import app.revanced.patches.shared.misc.settings.preference.IntentPreference
 import app.revanced.patches.shared.misc.settings.preference.PreferenceCategory
@@ -18,32 +19,34 @@ import app.revanced.util.returnEarly
 import org.w3c.dom.Node
 
 // TODO: Delete this on next major version bump.
-@Deprecated("Use non deprecated settings patch function")
+@Deprecated("Use non deprecated settings patch function",
+    ReplaceWith("settingsPatch(listOf(rootPreference), preferences)")
+)
 fun settingsPatch (
     rootPreference: Pair<IntentPreference, String>,
     preferences: Set<BasePreference>,
 ) = settingsPatch(listOf(rootPreference), preferences)
 
-private var themeForegroundColor : String? = null
-private var themeBackgroundColor : String? = null
+private var lightThemeColor : String? = null
+private var darkThemeColor : String? = null
 
 /**
  * Sets the default theme colors used in various ReVanced specific settings menus.
  * By default these colors are white and black, but instead can be set to the
  * same color the target app uses for it's own settings.
  */
-fun overrideThemeColors(foregroundColor: String, backgroundColor: String) {
-    themeForegroundColor = foregroundColor
-    themeBackgroundColor = backgroundColor
+fun overrideThemeColors(lightThemeColorString: String?, darkThemeColorString: String) {
+    lightThemeColor = lightThemeColorString
+    darkThemeColor = darkThemeColorString
 }
 
 private val settingsColorPatch = bytecodePatch {
     finalize {
-        if (themeForegroundColor != null) {
-            themeLightColorResourceNameFingerprint.method.returnEarly(themeForegroundColor!!)
+        if (lightThemeColor != null) {
+            themeLightColorResourceNameFingerprint.method.returnEarly(lightThemeColor!!)
         }
-        if (themeBackgroundColor != null) {
-            themeDarkColorResourceNameFingerprint.method.returnEarly(themeBackgroundColor!!)
+        if (darkThemeColor != null) {
+            themeDarkColorResourceNameFingerprint.method.returnEarly(darkThemeColor!!)
         }
     }
 }
@@ -59,20 +62,25 @@ fun settingsPatch (
     rootPreferences: List<Pair<BasePreference, String>>? = null,
     preferences: Set<BasePreference>,
 ) = resourcePatch {
-    dependsOn(addResourcesPatch, settingsColorPatch)
+    dependsOn(
+        addResourcesPatch,
+        settingsColorPatch,
+        addBrandLicensePatch
+    )
 
     execute {
         copyResources(
             "settings",
             ResourceGroup("xml", "revanced_prefs.xml", "revanced_prefs_icons.xml"),
+            ResourceGroup("menu", "revanced_search_menu.xml"),
             ResourceGroup("drawable",
                 // CustomListPreference resources.
                 "revanced_ic_dialog_alert.xml",
+                // Search resources.
                 "revanced_settings_arrow_time.xml",
-                "revanced_settings_circle_background.xml",
-                "revanced_settings_cursor.xml",
                 "revanced_settings_custom_checkmark.xml",
                 "revanced_settings_search_icon.xml",
+                "revanced_settings_search_remove.xml",
                 "revanced_settings_toolbar_arrow_left.xml",
             ),
             ResourceGroup("layout",
@@ -80,6 +88,16 @@ fun settingsPatch (
                 // Color picker.
                 "revanced_color_dot_widget.xml",
                 "revanced_color_picker.xml",
+                // Search.
+                "revanced_preference_search_history_item.xml",
+                "revanced_preference_search_history_screen.xml",
+                "revanced_preference_search_no_result.xml",
+                "revanced_preference_search_result_color.xml",
+                "revanced_preference_search_result_group_header.xml",
+                "revanced_preference_search_result_list.xml",
+                "revanced_preference_search_result_regular.xml",
+                "revanced_preference_search_result_switch.xml",
+                "revanced_settings_with_toolbar.xml"
             )
         )
 

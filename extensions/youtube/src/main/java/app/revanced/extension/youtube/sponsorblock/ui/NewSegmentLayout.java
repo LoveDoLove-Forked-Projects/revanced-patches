@@ -1,5 +1,9 @@
 package app.revanced.extension.youtube.sponsorblock.ui;
 
+import static app.revanced.extension.shared.Utils.getResourceColor;
+import static app.revanced.extension.shared.Utils.getResourceDimensionPixelSize;
+import static app.revanced.extension.shared.Utils.getResourceIdentifierOrThrow;
+
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.GradientDrawable;
@@ -10,14 +14,11 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 
+import app.revanced.extension.shared.Logger;
+import app.revanced.extension.shared.ui.Dim;
 import app.revanced.extension.youtube.patches.VideoInformation;
 import app.revanced.extension.youtube.settings.Settings;
 import app.revanced.extension.youtube.sponsorblock.SponsorBlockUtils;
-import app.revanced.extension.shared.Logger;
-
-import static app.revanced.extension.shared.Utils.getResourceColor;
-import static app.revanced.extension.shared.Utils.getResourceDimensionPixelSize;
-import static app.revanced.extension.shared.Utils.getResourceIdentifier;
 
 public final class NewSegmentLayout extends FrameLayout {
     private static final ColorStateList rippleColorStateList = new ColorStateList(
@@ -45,7 +46,7 @@ public final class NewSegmentLayout extends FrameLayout {
         super(context, attributeSet, defStyleAttr, defStyleRes);
 
         LayoutInflater.from(context).inflate(
-                getResourceIdentifier(context, "revanced_sb_new_segment", "layout"), this, true
+                getResourceIdentifierOrThrow(context, "revanced_sb_new_segment", "layout"), this, true
         );
 
         initializeButton(
@@ -104,7 +105,7 @@ public final class NewSegmentLayout extends FrameLayout {
      */
     private void initializeButton(final Context context, final String resourceIdentifierName,
                                   final ButtonOnClickHandlerFunction handler, final String debugMessage) {
-        ImageButton button = findViewById(getResourceIdentifier(context, resourceIdentifierName, "id"));
+        ImageButton button = findViewById(getResourceIdentifierOrThrow(context, resourceIdentifierName, "id"));
 
         // Add ripple effect
         RippleDrawable rippleDrawable = new RippleDrawable(
@@ -132,9 +133,7 @@ public final class NewSegmentLayout extends FrameLayout {
 
         GradientDrawable backgroundDrawable = new GradientDrawable();
         backgroundDrawable.setColor(getResourceColor("skip_ad_button_background_color"));
-        final float cornerRadius = squareLayout
-                ? 0
-                : 16 * getResources().getDisplayMetrics().density;
+        final float cornerRadius = squareLayout ? 0f : Dim.dp16;
         backgroundDrawable.setCornerRadius(cornerRadius);
         setBackground(backgroundDrawable);
     }
